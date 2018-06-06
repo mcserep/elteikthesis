@@ -1,0 +1,70 @@
+\documentclass[
+	%final % Megadásával a teendők elrejtésre kerülnek
+]{elteikthesis}[2018/06/06]
+
+% Nyelv kiválasztása
+\selectlanguage{magyar}
+%\selectlanguage{english}
+
+% Metaadatok
+\title{Dolgozat címe}
+\author{Hallgató Hanga}
+\supervisor{Témavezető Tamás}
+\degree{programtervező informatikus BSc}
+\affiliation{egyetemi tanársegéd}
+\university{Eötvös Loránd Tudományegyetem}
+\faculty{Informatikai Kar}
+\department{Programozáselmélet és Szoftvertechnológiai} % a 'Tanszék' automatikusan hozzáadásra kerül
+\city{Budapest}
+\date{2018}
+
+% A dolgozat
+\begin{document}
+
+% Teendők listája - final dokumentumban nincs	
+\listoftodos[Teendők listája]
+
+% Címlap - kötelező
+\maketitle
+
+% Tartalomjegyzék - kötelező
+\tableofcontents
+\cleardoublepage
+
+% Tartalom
+\input{chapters/intro.tex}
+\cleardoublepage
+
+\input{chapters/user.tex}
+\cleardoublepage
+
+\input{chapters/impl.tex}
+\cleardoublepage
+
+\input{chapters/sum.tex}
+\cleardoublepage
+
+% Irodalomjegyzék - kötelező
+\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+\bibliographystyle{unsrt}
+\bibliography{thesis}
+\cleardoublepage
+
+% Ábrajegyzék - ha szükséges
+\addcontentsline{toc}{chapter}{Ábrajegyzék}
+\renewcommand\listfigurename{Ábrajegyzék}
+\listoffigures
+\cleardoublepage
+
+% Táblázatjegyzék - ha szükséges
+\addcontentsline{toc}{chapter}{Táblázatjegyzék}
+\renewcommand\listtablename{Táblázatjegyzék}
+\listoftables
+\cleardoublepage
+
+% Forráskódjegyzék - ha szükséges
+\addcontentsline{toc}{chapter}{Forráskódjegyzék}
+\renewcommand\lstlistlistingname{Forráskódjegyzék}
+\lstlistoflistings
+
+\end{document}
