@@ -234,14 +234,6 @@
 % ------------------------------
 
 % ------------------------------
-% Tételek, definíciók
-\newtheorem{definition}{Definíció}
-\newtheorem{theorem}{Tétel}
-\newtheorem*{remark}{Emlékeztető}
-\newtheorem*{note}{Megjegyzés}
-% ------------------------------
-
-% ------------------------------
 % Feliratok, tartalomjegyzék, ábrajegyzék, táblázatjegyzék
 \RequirePackage[justification=centering]{caption}
 \RequirePackage[subfigure]{tocloft}
@@ -252,7 +244,7 @@
 
 % ------------------------------
 % Tárgymutató
-\usepackage{makeidx}
+\RequirePackage{makeidx}
 \makeindex
 % ------------------------------
 
@@ -314,15 +306,62 @@
 % Metaadatok
 \RequirePackage{xparse}
 \DeclareDocumentCommand{\author}{m}{\newcommand{\authorname}{#1}\renewcommand{\@author}{#1}}
+\NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
+
 \NewDocumentCommand{\supervisor}{m}{\newcommand{\supname}{#1}}
 \NewDocumentCommand{\affiliation}{m}{\newcommand{\supaff}{#1}}
-\NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
+
+\NewDocumentCommand{\extsupervisor}{m}{\newcommand{\extsupname}{#1}}
+\NewDocumentCommand{\extaffiliation}{m}{\newcommand{\extsupaff}{#1}}
+
 \NewDocumentCommand{\university}{m}{\newcommand{\univname}{#1}}
 \NewDocumentCommand{\faculty}{m}{\newcommand{\facname}{#1}}
 \NewDocumentCommand{\department}{m}{\newcommand{\deptname}{#1}}
+\NewDocumentCommand{\departmentSecondLine}{m}{\newcommand{\deptnamesec}{#1}}
 \NewDocumentCommand{\city}{m}{\newcommand{\cityname}{#1}}
+\NewDocumentCommand{\logo}{m}{\newcommand{\logofilename}{#1}}
+
 \DeclareDocumentCommand{\title}{m}{\newcommand{\thesistitle}{#1}\renewcommand{\@title}{#1}}
 \DeclareDocumentCommand{\date}{m}{\newcommand{\thesisyear}{#1}\renewcommand{\@date}{#1}}
+% ------------------------------
+
+% ------------------------------
+% Fordítások
+\DeclareDocumentCommand{\documentlang}{m}{
+	\selectlanguage{#1}
+	
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{magyar}}}
+	{
+		\newcommand{\authorlabel}{Szerző}
+		\newcommand{\suplabel}{Témavezető}
+		\newcommand{\intsuplabel}{Belső témavezető}
+		\newcommand{\extsuplabel}{Külső témavezető}
+		
+		\newcommand{\deflabel}{Definíció}
+		\newcommand{\theolabel}{Tétel}
+		\newcommand{\remlabel}{Emlékeztető}
+		\newcommand{\notelabel}{Megjegyzés}
+	}
+	{
+		\newcommand{\authorlabel}{Author}
+		\newcommand{\suplabel}{Supervisor}
+		\newcommand{\intsuplabel}{Internal supervisor}
+		\newcommand{\extsuplabel}{External supervisor}
+		
+		\newcommand{\deflabel}{Definiton}
+		\newcommand{\theolabel}{Theorem}
+		\newcommand{\remlabel}{Remark}
+		\newcommand{\notelabel}{Note}
+	}
+}
+% ------------------------------
+
+% ------------------------------
+% Tételek, definíciók
+\newtheorem{definition}{\deflabel}
+\newtheorem{theorem}{\theolabel}
+\newtheorem*{remark}{\remlabel}
+\newtheorem*{note}{\notelabel}
 % ------------------------------
 
 % ------------------------------
@@ -333,31 +372,53 @@
 		\begin{center}
 			
 			\begin{tabular}{ c c }
-				\multirow{4}{*}{\hspace{-1.0cm}\includegraphics[width=0.25\textwidth]{elte_cimer_szines}}
+				\multirow{4}{*}{\hspace{-1.0cm}\includegraphics[width=0.25\textwidth]{\logofilename}}
 				
 				& {\sc \Large \univname} \vspace{0.3cm}\\
 				& {\sc \Large \facname} \vspace{0.5cm}\\
 				& {\sc \large \deptname} \vspace{0.1cm}\\
-				& {\sc \large Tanszék}
+				& {\sc \large \deptnamesec}
 			\end{tabular}
 			
 			\vspace{5.0cm}
 			{\bf \LARGE \thesistitle}
-			\vspace{5.0cm}
-			
-			\begin{tabular}{ l c l }
-				{\it \large Témavezető:} &
-				\hspace{4.0cm} &
-				{\it \large Szerző:}\\
-				
-				{\large \supname} &
-				\hspace{4.0cm} &
+			\vspace{4.0cm}
+		
+			\ifdefined\extsupaff
+				{\it \large \authorlabel:}\\
 				{\large \authorname}\\
-				
-				\supaff &
-				\hspace{4.0cm} &
 				\degreename\\
-			\end{tabular}
+				\vspace{2.0cm}
+			
+				\begin{tabular}{ l c l }
+					{\it \large \intsuplabel:} &
+					\hspace{4.0cm} &
+					{\it \large \extsuplabel:}\\
+					
+					{\large \supname} &
+					\hspace{4.0cm} &
+					{\large \extsupname}\\
+					
+					\supaff &
+					\hspace{4.0cm} &
+					\extsupaff\\
+				\end{tabular}
+			\else
+				\vspace{1.0cm}
+				\begin{tabular}{ l c l }
+					{\it \large \suplabel:} &
+					\hspace{4.0cm} &
+					{\it \large \authorlabel:}\\
+					
+					{\large \supname} &
+					\hspace{4.0cm} &
+					{\large \authorname}\\
+					
+					\supaff &
+					\hspace{4.0cm} &
+					\degreename\\
+				\end{tabular}
+			\fi
 			
 			\vfill
 			
