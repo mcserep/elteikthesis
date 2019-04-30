@@ -1,7 +1,7 @@
 %% MIT License
 %%
-%% Version 1.0, 2018/06/06
-%% Copyright (c) 2013-2018 Máté Cserép, Bálint Bognár
+%% Version 1.1, 2019/04/30
+%% Copyright (c) 2013-2019 Máté Cserép, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
 %% of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2018/06/06 ELTE IK szakdolgozat és diplomamunka sablon]
+\ProvidesClass{elteikthesis}[2019/04/30 ELTE IK szakdolgozat és diplomamunka sablon]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions \relax
@@ -215,7 +215,7 @@
 % ------------------------------
 % Lábjegyzet folytonos számozása fejezetek között
 \RequirePackage{chngcntr}
-\counterwithout{footnote}{chapter}
+%\counterwithout{footnote}{chapter} % documenten belülre kell helyezni
 % Lábjegyzet oldalak közti eltörésének tiltása
 \interfootnotelinepenalty=10000
 % ------------------------------
@@ -231,6 +231,16 @@
 % ------------------------------
 % Függelék
 \RequirePackage{appendix}
+% ------------------------------
+
+% ------------------------------
+% Irodalomjegyzék
+\RequirePackage[style=english]{csquotes}
+\RequirePackage[
+	backend=bibtex,
+	style=numeric, % irodalomjegyzék stílusa
+	sorting=none   % idézések rendezettségee
+]{biblatex}
 % ------------------------------
 
 % ------------------------------
@@ -290,6 +300,8 @@
 }
 % Forráskódjegyzék elnevezése
 \renewcommand\lstlistingname{forráskód}
+% Algoritmus kommentek jobb szélre igazítása
+\renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
 % ------------------------------
 
 % ------------------------------
@@ -341,6 +353,12 @@
 		\newcommand{\theolabel}{Tétel}
 		\newcommand{\remlabel}{Emlékeztető}
 		\newcommand{\notelabel}{Megjegyzés}
+		
+		\newcommand{\biblabel}{Irodalomjegyzék}
+		\newcommand{\lstfigurelabel}{Ábrajegyzék}
+		\newcommand{\lsttablelabel}{Táblázatjegyzék}
+		\newcommand{\lstcodelabel}{Forráskódjegyzék}
+		\newcommand{\todolabel}{Teendők listája}
 	}
 	{
 		\newcommand{\authorlabel}{Author}
@@ -352,7 +370,17 @@
 		\newcommand{\theolabel}{Theorem}
 		\newcommand{\remlabel}{Remark}
 		\newcommand{\notelabel}{Note}
+		
+		\newcommand{\biblabel}{Bibliograhpy}
+		\newcommand{\lstfigurelabel}{List of Figures}
+		\newcommand{\lsttablelabel}{List of Tables}
+		\newcommand{\lstcodelabel}{List of Codes}
+		\newcommand{\todolabel}{Todo list}
 	}
+
+	\renewcommand{\listfigurename}{\lstfigurelabel}		
+	\renewcommand{\listtablename}{\lsttablelabel}
+	\renewcommand{\lstlistlistingname}{\lstcodelabel}
 }
 % ------------------------------
 

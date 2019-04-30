@@ -1,10 +1,10 @@
 \documentclass[
 	%final % Megadásával a teendők elrejtésre kerülnek
-]{elteikthesis}[2018/06/06]
+]{elteikthesis}[2019/04/30]
 
 % Dolgozat metaadatai
 \title{Dolgozat címe}
-\date{2018}
+\date{2019}
 
 % Szerző metaadatai
 \author{Hallgató Hanga}
@@ -24,6 +24,9 @@
 \city{Budapest}
 \logo{elte_cimer_szines}
 
+% Irodalomjegyzék hozzáadása
+\addbibresource{thesis.bib}
+
 % A dolgozat
 \begin{document}
 	
@@ -32,7 +35,10 @@
 %\documentlang{english}
 
 % Teendők listája - final dokumentumban nincs	
-\listoftodos[Teendők listája]
+\listoftodos[\todolabel]
+
+% Lábjegyzet folytonos számozása fejezetek között
+\counterwithout{footnote}{chapter}
 
 % Címlap - kötelező
 \maketitle
@@ -55,26 +61,22 @@
 \cleardoublepage
 
 % Irodalomjegyzék - kötelező
-\addcontentsline{toc}{chapter}{Irodalomjegyzék}
-\bibliographystyle{unsrt}
-\bibliography{thesis}
+\addcontentsline{toc}{chapter}{\biblabel}
+\printbibliography[title=\biblabel]
 \cleardoublepage
 
 % Ábrajegyzék - ha szükséges
-\addcontentsline{toc}{chapter}{Ábrajegyzék}
-\renewcommand\listfigurename{Ábrajegyzék}
+\addcontentsline{toc}{chapter}{\lstfigurelabel}
 \listoffigures
 \cleardoublepage
 
 % Táblázatjegyzék - ha szükséges
-\addcontentsline{toc}{chapter}{Táblázatjegyzék}
-\renewcommand\listtablename{Táblázatjegyzék}
+\addcontentsline{toc}{chapter}{\lsttablelabel}
 \listoftables
 \cleardoublepage
 
 % Forráskódjegyzék - ha szükséges
-\addcontentsline{toc}{chapter}{Forráskódjegyzék}
-\renewcommand\lstlistlistingname{Forráskódjegyzék}
+\addcontentsline{toc}{chapter}{\lstcodelabel}
 \lstlistoflistings
 
 \end{document}

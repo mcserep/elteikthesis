@@ -15,7 +15,7 @@ A sablon alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált, de
 
 **Táblázatkezelés:**
 * Oszlopok és sorok egyesítése: [multirow](https://ctan.org/pkg/multirow)
-* Tördelhető táblázat: [lontable](https://ctan.org/pkg/longtable)
+* Tördelhető táblázat: [longtable](https://ctan.org/pkg/longtable)
 * Cellatartalom vertikális igazítása: [array](https://ctan.org/pkg/array)
 
 **Felsorolások:**
