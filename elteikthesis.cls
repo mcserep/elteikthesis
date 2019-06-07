@@ -300,8 +300,6 @@
 	captionpos=b,
 	morekeywords={var}
 }
-% Forráskódjegyzék elnevezése
-\renewcommand\lstlistingname{forráskód}
 % Algoritmus kommentek jobb szélre igazítása
 \renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
 % ------------------------------
@@ -355,9 +353,12 @@
 		\newcommand{\remlabel}{Emlékeztető}
 		\newcommand{\notelabel}{Megjegyzés}
 		
+		\newcommand{\codelabel}{forráskód}
+		\newcommand{\alglabel}{Algoritmus}
+		
 		\newcommand{\biblabel}{Irodalomjegyzék}
 		\newcommand{\lstfigurelabel}{Ábrajegyzék}
-		\newcommand{\lsttablelabel}{Táblázatjegyzék}
+		\newcommand{\lsttablelabel}{Táblázatjegyzék}		
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
 		\newcommand{\todolabel}{Teendők listája}
 	}
@@ -370,7 +371,10 @@
 		\newcommand{\deflabel}{Definiton}
 		\newcommand{\theolabel}{Theorem}
 		\newcommand{\remlabel}{Remark}
-		\newcommand{\notelabel}{Note}
+		\newcommand{\notelabel}{Note}		
+		
+		\newcommand{\codelabel}{Code}		
+		\newcommand{\alglabel}{Algorithm}
 		
 		\newcommand{\biblabel}{Bibliograhpy}
 		\newcommand{\lstfigurelabel}{List of Figures}
@@ -379,8 +383,16 @@
 		\newcommand{\todolabel}{Todo list}
 	}
 
-	\renewcommand{\listfigurename}{\lstfigurelabel}		
+	% Forráskód elnevezése
+	\renewcommand{\lstlistingname}{\codelabel}
+	% Algoritmus elnevezése
+	\renewcommand{\ALG@name}{\alglabel}
+
+	% Ábrajegyzék elnevezése
+	\renewcommand{\listfigurename}{\lstfigurelabel}
+	% Táblázatjegyzék elnevezése	
 	\renewcommand{\listtablename}{\lsttablelabel}
+	% Forráskódjegyzék elnevezése
 	\renewcommand{\lstlistlistingname}{\lstcodelabel}
 }
 % ------------------------------
