@@ -90,11 +90,6 @@
 % ------------------------------
 
 % ------------------------------
-% Times font használata
-%\RequirePackage{txfonts}
-% ------------------------------
-
-% ------------------------------
 % Grafika
 \RequirePackage{graphicx}
 \RequirePackage{float}
@@ -171,6 +166,11 @@
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+% ------------------------------
+
+% ------------------------------
+% Times font használata
+%\RequirePackage{txfonts}
 % ------------------------------
 
 % ------------------------------
