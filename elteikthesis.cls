@@ -203,6 +203,8 @@
 \RequirePackage{longtable}
 % Celltartalmak vertikális igazítása
 \RequirePackage{array}
+% Sortörés táblázat cellákban
+\RequirePackage{makecell}
 % ------------------------------
 
 % ------------------------------
@@ -329,7 +331,6 @@
 \NewDocumentCommand{\university}{m}{\newcommand{\univname}{#1}}
 \NewDocumentCommand{\faculty}{m}{\newcommand{\facname}{#1}}
 \NewDocumentCommand{\department}{m}{\newcommand{\deptname}{#1}}
-\NewDocumentCommand{\departmentSecondLine}{m}{\newcommand{\deptnamesec}{#1}}
 \NewDocumentCommand{\city}{m}{\newcommand{\cityname}{#1}}
 \NewDocumentCommand{\logo}{m}{\newcommand{\logofilename}{#1}}
 
@@ -402,10 +403,9 @@
 			\begin{tabular}{ c c }
 				\multirow{4}{*}{\hspace{-1.0cm}\includegraphics[width=0.25\textwidth]{\logofilename}}
 				
-				& {\sc \Large \univname} \vspace{0.3cm}\\
-				& {\sc \Large \facname} \vspace{0.5cm}\\
-				& {\sc \large \deptname} \vspace{0.1cm}\\
-				& {\sc \large \deptnamesec}
+				& {\sc \Large \makecell{\univname}} \vspace{0.3cm}\\
+				& {\sc \Large \makecell{\facname}} \vspace{0.5cm}\\
+				& {\sc \large \makecell{\deptname}}
 			\end{tabular}
 			
 			\vspace{5.0cm}
