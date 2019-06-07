@@ -1,0 +1,14 @@
+% Lábjegyzet folytonos számozása fejezetek között
+\counterwithout{footnote}{chapter}
+
+% Tartalomjegyzék oldalszámozásának rejtése
+\newcounter{conpageno}
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{
+	\pagenumbering{gobble}
+	\oldtableofcontents
+	\cleardoublepage
+	\setcounter{conpageno}{\value{page}}
+	\pagenumbering{arabic}
+	\setcounter{page}{\value{conpageno}}
+}

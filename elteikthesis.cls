@@ -249,8 +249,6 @@
 % Feliratok, tartalomjegyzék, ábrajegyzék, táblázatjegyzék
 \RequirePackage[justification=centering]{caption}
 \RequirePackage[subfigure]{tocloft}
-% Tartalomjegyzék oldalszámozásának rejtése
-\tocloftpagestyle{empty}
 
 % ------------------------------
 
