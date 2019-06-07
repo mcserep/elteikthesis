@@ -22,11 +22,15 @@ A sablon alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált, de
 **Felsorolások:**
 * Szoros térközű felsorolások: [paralist](https://ctan.org/pkg/paralist)
 
-**Egyebek:**
+**Matematika és algoritmusok:**
+* Matematikai formulák, definíciók: [amsmath](https://ctan.org/pkg/amsmath), [amsthm](https://ctan.org/pkg/amsthm)
+* Algoritmusok: [algorithmic](https://ctan.org/pkg/algorithms)
 * Kódblokkok: [listingsutf8](https://ctan.org/pkg/listingsutf8)
+
+**Egyebek:**
 * Teendők: [todonotes](https://ctan.org/pkg/todonotes)
 
-## Tételszerű bekezdések
+## Előre definiált tételszerű bekezdések
 
 * definition: Definíció
 * theorem: Tétel
