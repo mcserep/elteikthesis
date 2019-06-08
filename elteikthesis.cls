@@ -181,6 +181,7 @@
 % Színek
 \definecolor{codebackg}{rgb}{0.95,0.95,0.95}
 \definecolor{codecomment}{rgb}{0,0.6,0}
+\definecolor{codestring}{rgb}{0.58,0,0.82}
 \colorlet{todobackg}{orange!10}
 % ------------------------------
 
@@ -284,6 +285,7 @@
     backgroundcolor=\color{codebackg},
 	keywordstyle=\color{blue},
 	commentstyle=\color{codecomment},
+	stringstyle=\color{codestring},
 	stepnumber=1,
 	firstnumber=1,
 	numbersep=5pt,
@@ -295,8 +297,7 @@
 	breakatwhitespace=false,
 	float,
 	frame=linesc,
-	captionpos=b,
-	morekeywords={var}
+	captionpos=b
 }
 % Algoritmus kommentek jobb szélre igazítása
 \renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
