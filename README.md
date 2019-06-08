@@ -23,7 +23,9 @@ A sablon alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált, de
 * Szoros térközű felsorolások: [paralist](https://ctan.org/pkg/paralist)
 
 **Matematika és algoritmusok:**
-* Matematikai formulák, definíciók: [amsmath](https://ctan.org/pkg/amsmath), [amsthm](https://ctan.org/pkg/amsthm)
+* Matematikai formulák: [amsmath](https://ctan.org/pkg/amsmath)
+* Matematikai definíciók: [amsthm](https://ctan.org/pkg/amsthm)
+* Matematikai szimbólumok: [amsfonts](https://ctan.org/pkg/amsfonts)
 * Algoritmusok: [algorithmic](https://ctan.org/pkg/algorithms)
 * Kódblokkok: [listingsutf8](https://ctan.org/pkg/listingsutf8)
 
@@ -32,7 +34,7 @@ A sablon alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált, de
 
 ## Előre definiált tételszerű bekezdések
 
-* definition: Definíció
-* theorem: Tétel
-* remark: Emlékeztető
-* note: Megjegyzés
+* *definition*: Definíció
+* *theorem*: Tétel
+* *remark*: Emlékeztető
+* *note*: Megjegyzés

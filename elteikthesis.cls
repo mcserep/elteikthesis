@@ -165,6 +165,7 @@
 % Matematikai mód
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
+\RequirePackage{amsfonts}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 % ------------------------------
 
@@ -260,8 +261,7 @@
 
 % ------------------------------
 % Jelölésjegyzék
-\RequirePackage [refpage,noprefix]{nomencl}
-\renewcommand{\nomname}{Jelölésjegyzék}
+\RequirePackage[intoc,noprefix,refpage]{nomencl}
 % Elemek közötti bigskip kihagyása
 \setlength{\nomitemsep}{-\parsep}
 % Jobbra igazítás
@@ -358,6 +358,7 @@
 		\newcommand{\lstfigurelabel}{Ábrajegyzék}
 		\newcommand{\lsttablelabel}{Táblázatjegyzék}		
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
+		\newcommand{\lstnomencl}{Jelölésjegyzék}
 		\newcommand{\todolabel}{Teendők listája}
 	}
 	{
@@ -377,7 +378,8 @@
 		\newcommand{\biblabel}{Bibliograhpy}
 		\newcommand{\lstfigurelabel}{List of Figures}
 		\newcommand{\lsttablelabel}{List of Tables}
-		\newcommand{\lstcodelabel}{List of Codes}
+		\newcommand{\lstcodelabel}{List of Codes}		
+		\newcommand{\lstnomencl}{List of Symbols}
 		\newcommand{\todolabel}{Todo list}
 	}
 
@@ -392,6 +394,8 @@
 	\renewcommand{\listtablename}{\lsttablelabel}
 	% Forráskódjegyzék elnevezése
 	\renewcommand{\lstlistlistingname}{\lstcodelabel}
+	% Jelölésjegyzék elnevezése
+	\renewcommand{\nomname}{\lstnomencl}
 }
 % ------------------------------
 
