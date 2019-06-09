@@ -2,9 +2,10 @@
 
 The [thesis.tex](thesis.tex) and the produced [thesis.pdf](thesis.pdf) serves as an example of usage.
 This class template enforces the required formatting rules for bachelor and master theses and generates the cover page given on the provided metadata. The chapters of the example document follows the typical structure of a BSc thesis.
-The formatting rules are defined to meet the requirements for theses submitted at the Eötvös Loránd University, Faculty of Informatics (Budapest, Hungary). However with minor modifications the template should be usable at other universities, too.
+The formatting rules are defined to meet the requirements for theses submitted at the Eötvös Loránd University, Faculty of Informatics (Budapest, Hungary). However with sufficient modifications the template should be usable at other universities, too.
 
-The template is configured for single sided printing by default, but also contains the required settings for double sided printing (commented out). The template supports producing both Hungarian and English theses, which can be easily controlled (see `\documentlang`).
+The template contains configuration both for single and double sided printing (see `twoside` option), by default it is set to the recommended single side format.
+The template supports producing both Hungarian and English theses, which can be easily controlled (see `\documentlang` command).
 
 ## Compilation
 

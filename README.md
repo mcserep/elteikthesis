@@ -6,7 +6,8 @@ A [thesis.tex](thesis.tex) és a belőle előálló [thesis.pdf](thesis.pdf) szo
 A sablon alkalmazza a szakdolgozatra / diplomamunkára vonatkozó formai előírásokat, valamint elkészíti a megadott metaadatok alapján a címlapot. A példa dokumentum tartalmi fejezetei a BSc szakdolgozat tipikus felépítését tükrözik.
 A formai megkötések az ELTE Informatikai Kar szabályzatában rögzítetteknek felelnek meg, de általánosan (a megfelelő módosításokkal) alkalmazható más egyetemek dolgozataihoz is.
 
-A sablon alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált, de előkészítetten (kikommentelve) tartalmazza a két oldalas nyomtatáshoz szükséges beállításokat. A sablon magyar és angol nyelvű dokumentumok elkészítését támogatja (ld. `\documentlang`).
+A sablon tartalmazza az egy és két oldalas nyomtatáshoz szükséges beállításokat is (ld. `twoside` paraméter), alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált. (Érdemes figyelembe venni, hogy 20-nál kevesebb lapszám kemény kötésben furcsán mutat, továbbá az ábrák könnyen átütnek az általános 80g/m<sup>2</sup> fénymásolópapíron).
+A sablon magyar és angol nyelvű dokumentumok elkészítését is támogatja (ld. `\documentlang` parancs).
 
 ## Fordítás
 
