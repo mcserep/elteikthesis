@@ -99,7 +99,10 @@
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
 		\newcommand{\lstnomencl}{Jelölésjegyzék}
 		\newcommand{\todolabel}{Teendők listája}
-	}{ % Angol
+		
+		\newcommand{\declarationplaceholder}{Az eredeti szakdolgozati / diplomamunka témabjelentő helye.}
+	}
+	{ % Angol
 		\newcommand{\authorlabel}{Author}
 		\newcommand{\suplabel}{Supervisor}
 		\newcommand{\intsuplabel}{Internal supervisor}
@@ -119,6 +122,8 @@
 		\newcommand{\lstcodelabel}{List of Codes}
 		\newcommand{\lstnomencl}{List of Symbols}
 		\newcommand{\todolabel}{Todo list}
+		
+		\newcommand{\declarationplaceholder}{This page should be the original Thesis Topic Declaration.}
 	}
 }
 % ------------------------------
@@ -502,5 +507,23 @@
 		\end{center}
 
 	\end{titlepage}
+}
+% ------------------------------
+
+% ------------------------------
+% Témabejelentő
+\newcommand{\topicdeclaration}{
+	\thispagestyle{empty}
+	\begin{center}
+		\vspace*{\fill}
+		
+		{\large \declarationplaceholder}
+		
+		\vspace*{\fill}
+	\end{center}
+
+
+	\cleardoublepage
+	\setcounter{page}{1}
 }
 % ------------------------------
