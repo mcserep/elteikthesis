@@ -289,7 +289,7 @@
 
 % ------------------------------
 % Times font használata
-%\RequirePackage{txfonts}
+%\RequirePackage{mathptmx}
 % ------------------------------
 
 % ------------------------------
