@@ -22,14 +22,14 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2019/04/30 ELTE IK szakdolgozat és diplomamunka sablon]
+\ProvidesClass{elteikthesis}[2019/04/30 ELTE IK bachelor and master thesis template]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions \relax
 
-% Egyoldalashoz
+% Egyoldalashoz / Single sided document
 \LoadClass[a4paper, 12pt, oneside]{report}
-% Kétoldalashoz
+% Kétoldalashoz / Double sided document
 %\LoadClass[a4paper, 12pt, twoside, openright]{report}
 
 % ------------------------------
@@ -46,9 +46,9 @@
 
 % Fejléc törlése
 \fancyhead{}
-% Fejléc beállítása (egyoldalashoz)
+% Fejléc beállítása (egyoldalashoz) / Set header (single sided document)
 \fancyhead[C]{\slshape \leftmark}
-% Fejléc beállítása (kétoldalashoz)
+% Fejléc beállítása (kétoldalashoz) / Set header (double sided document)
 %\fancyhead[EC]{\slshape \leftmark}
 %\fancyhead[OC]{\slshape \rightmark}
 
@@ -137,8 +137,12 @@
 % ------------------------------
 % Helyközök és tördelés
 \linespread{1.5}
+% Egyszeres helyköz a mondatok végén
 \frenchspacing
+% Szavak jobb margón túlnyúlásának tiltása
 \sloppy
+% Szavak elválasztásának tiltása
+%\RequirePackage[none]{hyphenat}
 
 % Beállítás alternatív módon
 %\RequirePackage{setspace}
@@ -217,9 +221,8 @@
 % ------------------------------
 
 % ------------------------------
-% Lábjegyzet folytonos számozása fejezetek között
+% Számozott elemek kezelése
 \RequirePackage{chngcntr}
-%\counterwithout{footnote}{chapter} % documenten belülre kell helyezni
 % Lábjegyzet oldalak közti eltörésének tiltása
 \interfootnotelinepenalty=10000
 % ------------------------------

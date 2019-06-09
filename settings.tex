@@ -1,7 +1,9 @@
 % Lábjegyzet folytonos számozása fejezetek között
+% Contiunous counting of footnotes among chapters
 \counterwithout{footnote}{chapter}
 
 % Tartalomjegyzék oldalszámozásának rejtése
+% Hide page numbering of ToC
 \newcounter{conpageno}
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
