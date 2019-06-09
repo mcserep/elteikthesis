@@ -1,12 +1,32 @@
+See [English version](README_en.md).
+
 # ELTE IK szakdolgozat és diplomamunka sablon
 
 A [thesis.tex](thesis.tex) és a belőle előálló [thesis.pdf](thesis.pdf) szolgál kiindulási példaként.
-A sablon alkalmazza a szakdolgozatra / diplomamunkára vonatkozó formai előírásokat, valamint elkészíti a megadott metaadatok alapján a címlapot.
+A sablon alkalmazza a szakdolgozatra / diplomamunkára vonatkozó formai előírásokat, valamint elkészíti a megadott metaadatok alapján a címlapot. A példa dokumentum tartalmi fejezetei a BSc szakdolgozat tipikus felépítését tükrözik.
 A formai megkötések az ELTE Informatikai Kar szabályzatában rögzítetteknek felelnek meg, de általánosan (a megfelelő módosításokkal) alkalmazható más egyetemek dolgozataihoz is.
 
 A sablon alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált, de előkészítetten (kikommentelve) tartalmazza a két oldalas nyomtatáshoz szükséges beállításokat. A sablon magyar és angol nyelvű dokumentumok elkészítését támogatja (ld. `\documentlang`).
 
-## Fontosabb kiegészítő csomagok
+## Fordítás
+
+```bash
+# thesis.aux fájl generálása (PDF fájl még hibás hivatkozásokat fog tartalmazni)
+pdflatex thesis.pdf
+# Irodalomjegyzék generálása
+bibtex thesis
+# Jelölésjegyzék generálása (ha szükséges)
+makeindex -s nomencl.ist -t thesis.nlg -o thesis.nls thesis.nlo
+# Végleges PDF fájl generálása
+pdflatex thesis.pdf
+pdflatex thesis.pdf
+```
+
+**Megjegyzés:** az irodalomjegyzék változása esetén a `bibtex`, majd a `pdflatex` _kétszeri_ futtatása szükséges a helyes hivatkozások előállításához.
+
+A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStudio](https://www.texstudio.org/)), ugyanezen utasítások kiadásával.
+
+## Fontosabb függőségi csomagok
 
 **Képkezelés:**
 * Minimális és maximális méret: [adjustbox](https://ctan.org/pkg/adjustbox)
@@ -17,7 +37,7 @@ A sablon alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált, de
 * Oszlopok és sorok egyesítése: [multirow](https://ctan.org/pkg/multirow)
 * Tördelhető táblázat: [longtable](https://ctan.org/pkg/longtable)
 * Cellatartalom vertikális igazítása: [array](https://ctan.org/pkg/array)
-* Többsoros cellák: [makecell](https://ctan.org/pkg/makecell)
+* Többsoros cellák (sortörés): [makecell](https://ctan.org/pkg/makecell)
 
 **Felsorolások:**
 * Szoros térközű felsorolások: [paralist](https://ctan.org/pkg/paralist)

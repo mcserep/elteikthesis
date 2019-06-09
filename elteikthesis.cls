@@ -1,6 +1,6 @@
 %% MIT License
 %%
-%% Version 1.1, 2019/04/30
+%% Version 1.2, 2019/06/09
 %% Copyright (c) 2013-2019 Máté Cserép, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,7 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2019/04/30 ELTE FI bachelor and master thesis template]
+\ProvidesClass{elteikthesis}[2019/06/09 ELTE FI bachelor and master thesis template]
 
 % LaTeX programozói eszközök
 \RequirePackage{etoolbox}
@@ -76,7 +76,7 @@
 % Fordítások
 \DeclareDocumentCommand{\documentlang}{m}{
 	\selectlanguage{#1}
-	
+
 	% Magyar
 	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{magyar}}}
 	{
@@ -84,18 +84,18 @@
 		\newcommand{\suplabel}{Témavezető}
 		\newcommand{\intsuplabel}{Belső témavezető}
 		\newcommand{\extsuplabel}{Külső témavezető}
-		
+
 		\newcommand{\deflabel}{Definíció}
 		\newcommand{\theolabel}{Tétel}
 		\newcommand{\remlabel}{Emlékeztető}
 		\newcommand{\notelabel}{Megjegyzés}
-		
+
 		\newcommand{\codelabel}{forráskód}
 		\newcommand{\alglabel}{Algoritmus}
-		
+
 		\newcommand{\biblabel}{Irodalomjegyzék}
 		\newcommand{\lstfigurelabel}{Ábrajegyzék}
-		\newcommand{\lsttablelabel}{Táblázatjegyzék}		
+		\newcommand{\lsttablelabel}{Táblázatjegyzék}
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
 		\newcommand{\lstnomencl}{Jelölésjegyzék}
 		\newcommand{\todolabel}{Teendők listája}
@@ -104,19 +104,19 @@
 		\newcommand{\suplabel}{Supervisor}
 		\newcommand{\intsuplabel}{Internal supervisor}
 		\newcommand{\extsuplabel}{External supervisor}
-		
+
 		\newcommand{\deflabel}{Definiton}
 		\newcommand{\theolabel}{Theorem}
 		\newcommand{\remlabel}{Remark}
-		\newcommand{\notelabel}{Note}		
-		
-		\newcommand{\codelabel}{Code}		
+		\newcommand{\notelabel}{Note}
+
+		\newcommand{\codelabel}{Code}
 		\newcommand{\alglabel}{Algorithm}
-		
+
 		\newcommand{\biblabel}{Bibliograhpy}
 		\newcommand{\lstfigurelabel}{List of Figures}
 		\newcommand{\lsttablelabel}{List of Tables}
-		\newcommand{\lstcodelabel}{List of Codes}		
+		\newcommand{\lstcodelabel}{List of Codes}
 		\newcommand{\lstnomencl}{List of Symbols}
 		\newcommand{\todolabel}{Todo list}
 	}
@@ -230,7 +230,7 @@
 		\RequirePackage[skip=0pt]{parskip}
 	}{
 		% alapértelmezés szerint nincs térköz, de van behúzás
-	}	
+	}
 }
 % ------------------------------
 
@@ -325,7 +325,7 @@
 \RequirePackage{array}
 % Sortörés táblázat cellákban
 \RequirePackage{makecell}
-% Táblázatjegyzék elnevezése	
+% Táblázatjegyzék elnevezése
 \renewcommand{\listtablename}{\lsttablelabel}
 % ------------------------------
 
@@ -444,36 +444,36 @@
 % Címlap
 \renewcommand{\maketitle}{
 	\begin{titlepage}
-		
+
 		\begin{center}
-			
+
 			\begin{tabular}{ c c }
 				\multirow{4}{*}{\hspace{-1.0cm}\includegraphics[width=0.25\textwidth]{\logofilename}}
-				
+
 				& {\sc \Large \makecell{\univname}} \vspace{0.3cm}\\
 				& {\sc \Large \makecell{\facname}} \vspace{0.5cm}\\
 				& {\sc \large \makecell{\deptname}}
 			\end{tabular}
-			
+
 			\vspace{5.0cm}
 			{\bf \LARGE \thesistitle}
 			\vspace{4.0cm}
-		
+
 			\ifdefined\extsupaff
 				{\it \large \authorlabel:}\\
 				{\large \authorname}\\
 				\degreename\\
 				\vspace{2.0cm}
-			
+
 				\begin{tabular}{ l c l }
 					{\it \large \intsuplabel:} &
 					\hspace{4.0cm} &
 					{\it \large \extsuplabel:}\\
-					
+
 					{\large \supname} &
 					\hspace{4.0cm} &
 					{\large \extsupname}\\
-					
+
 					\supaff &
 					\hspace{4.0cm} &
 					\extsupaff\\
@@ -484,23 +484,23 @@
 					{\it \large \suplabel:} &
 					\hspace{4.0cm} &
 					{\it \large \authorlabel:}\\
-					
+
 					{\large \supname} &
 					\hspace{4.0cm} &
 					{\large \authorname}\\
-					
+
 					\supaff &
 					\hspace{4.0cm} &
 					\degreename\\
 				\end{tabular}
 			\fi
-			
+
 			\vfill
-			
+
 			{\it \cityname, \thesisyear}
-			
+
 		\end{center}
-		
+
 	\end{titlepage}
 }
 % ------------------------------
