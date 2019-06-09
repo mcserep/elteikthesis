@@ -22,15 +22,106 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2019/04/30 ELTE IK bachelor and master thesis template]
+\ProvidesClass{elteikthesis}[2019/04/30 ELTE FI bachelor and master thesis template]
 
+% LaTeX programozói eszközök
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+\RequirePackage{ifthen}
+
+% ------------------------------
+% Paraméterek feldolgozása
+\newtoggle{oneside}\toggletrue{oneside}
+\newtoggle{hypenation}\toggletrue{hypenation}
+\newtoggle{parspace}\togglefalse{parspace}
+\newtoggle{indent}\toggletrue{indent}
+
+\DeclareOption{nohyp}{\togglefalse{hypenation}}
+\DeclareOption{parspace}{\toggletrue{parspace}}
+\DeclareOption{noindent}{\togglefalse{indent}}
+\DeclareOption{twoside}{
+	\PassOptionsToClass{\CurrentOption}{report}
+	\PassOptionsToClass{openright}{report}
+	\togglefalse{oneside}
+}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions \relax
 
-% Egyoldalashoz / Single sided document
+% Osztály betöltése (alapértelmezett beállítások)
 \LoadClass[a4paper, 12pt, oneside]{report}
-% Kétoldalashoz / Double sided document
-%\LoadClass[a4paper, 12pt, twoside, openright]{report}
+% ------------------------------
+
+% ------------------------------
+% Metaadatok
+\DeclareDocumentCommand{\author}{m}{\newcommand{\authorname}{#1}\renewcommand{\@author}{#1}}
+\NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
+
+\NewDocumentCommand{\supervisor}{m}{\newcommand{\supname}{#1}}
+\NewDocumentCommand{\affiliation}{m}{\newcommand{\supaff}{#1}}
+
+\NewDocumentCommand{\extsupervisor}{m}{\newcommand{\extsupname}{#1}}
+\NewDocumentCommand{\extaffiliation}{m}{\newcommand{\extsupaff}{#1}}
+
+\NewDocumentCommand{\university}{m}{\newcommand{\univname}{#1}}
+\NewDocumentCommand{\faculty}{m}{\newcommand{\facname}{#1}}
+\NewDocumentCommand{\department}{m}{\newcommand{\deptname}{#1}}
+\NewDocumentCommand{\city}{m}{\newcommand{\cityname}{#1}}
+\NewDocumentCommand{\logo}{m}{\newcommand{\logofilename}{#1}}
+
+\DeclareDocumentCommand{\title}{m}{\newcommand{\thesistitle}{#1}\renewcommand{\@title}{#1}}
+\DeclareDocumentCommand{\date}{m}{\newcommand{\thesisyear}{#1}\renewcommand{\@date}{#1}}
+% ------------------------------
+
+% ------------------------------
+% Fordítások
+\DeclareDocumentCommand{\documentlang}{m}{
+	\selectlanguage{#1}
+	
+	% Magyar
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{magyar}}}
+	{
+		\newcommand{\authorlabel}{Szerző}
+		\newcommand{\suplabel}{Témavezető}
+		\newcommand{\intsuplabel}{Belső témavezető}
+		\newcommand{\extsuplabel}{Külső témavezető}
+		
+		\newcommand{\deflabel}{Definíció}
+		\newcommand{\theolabel}{Tétel}
+		\newcommand{\remlabel}{Emlékeztető}
+		\newcommand{\notelabel}{Megjegyzés}
+		
+		\newcommand{\codelabel}{forráskód}
+		\newcommand{\alglabel}{Algoritmus}
+		
+		\newcommand{\biblabel}{Irodalomjegyzék}
+		\newcommand{\lstfigurelabel}{Ábrajegyzék}
+		\newcommand{\lsttablelabel}{Táblázatjegyzék}		
+		\newcommand{\lstcodelabel}{Forráskódjegyzék}
+		\newcommand{\lstnomencl}{Jelölésjegyzék}
+		\newcommand{\todolabel}{Teendők listája}
+	}{ % Angol
+		\newcommand{\authorlabel}{Author}
+		\newcommand{\suplabel}{Supervisor}
+		\newcommand{\intsuplabel}{Internal supervisor}
+		\newcommand{\extsuplabel}{External supervisor}
+		
+		\newcommand{\deflabel}{Definiton}
+		\newcommand{\theolabel}{Theorem}
+		\newcommand{\remlabel}{Remark}
+		\newcommand{\notelabel}{Note}		
+		
+		\newcommand{\codelabel}{Code}		
+		\newcommand{\alglabel}{Algorithm}
+		
+		\newcommand{\biblabel}{Bibliograhpy}
+		\newcommand{\lstfigurelabel}{List of Figures}
+		\newcommand{\lsttablelabel}{List of Tables}
+		\newcommand{\lstcodelabel}{List of Codes}		
+		\newcommand{\lstnomencl}{List of Symbols}
+		\newcommand{\todolabel}{Todo list}
+	}
+}
+% ------------------------------
 
 % ------------------------------
 % Fejlécek és láblécek
@@ -46,11 +137,13 @@
 
 % Fejléc törlése
 \fancyhead{}
-% Fejléc beállítása (egyoldalashoz) / Set header (single sided document)
-\fancyhead[C]{\slshape \leftmark}
-% Fejléc beállítása (kétoldalashoz) / Set header (double sided document)
-%\fancyhead[EC]{\slshape \leftmark}
-%\fancyhead[OC]{\slshape \rightmark}
+% Fejléc beállítása
+\iftoggle{oneside}{ % egyoldalashoz
+	\fancyhead[C]{\slshape \leftmark}
+}{ % kétoldalashoz
+	\fancyhead[EC]{\slshape \leftmark}
+	\fancyhead[OC]{\slshape \rightmark}
+}
 
 % Fejléc és lábléc távolsága a tartalomtól
 \topskip = 15pt		% default: 10pt
@@ -106,6 +199,8 @@
 \DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg}
 % Képek tárolási helye
 \graphicspath{{./images/}}
+% Ábrajegyzék elnevezése
+\renewcommand{\listfigurename}{\lstfigurelabel}
 % ------------------------------
 
 % ------------------------------
@@ -123,9 +218,20 @@
 
 % ------------------------------
 % Térköz bekezdések közé
-%\RequirePackage{parskip}
-% A bekezdések első soros behúzása maradjon meg
-%\setlength{\parindent}{3.5ex}
+\iftoggle{parspace}{
+	\RequirePackage{parskip}
+	% A bekezdések első soros behúzása maradjon meg
+	\iftoggle{indent}{
+		\setlength{\parindent}{3.5ex}
+	}{}
+}{
+	% Nincs se térköz, se behúzás
+	\nottoggle{indent}{
+		\RequirePackage[skip=0pt]{parskip}
+	}{
+		% alapértelmezés szerint nincs térköz, de van behúzás
+	}	
+}
 % ------------------------------
 
 % ------------------------------
@@ -142,7 +248,7 @@
 % Szavak jobb margón túlnyúlásának tiltása
 \sloppy
 % Szavak elválasztásának tiltása
-%\RequirePackage[none]{hyphenat}
+\nottoggle{hypenation}{\RequirePackage[none]{hyphenat}}{}
 
 % Beállítás alternatív módon
 %\RequirePackage{setspace}
@@ -171,6 +277,14 @@
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+% ------------------------------
+
+% ------------------------------
+% Tételek, definíciók
+\newtheorem{definition}{\deflabel}
+\newtheorem{theorem}{\theolabel}
+\newtheorem*{remark}{\remlabel}
+\newtheorem*{note}{\notelabel}
 % ------------------------------
 
 % ------------------------------
@@ -211,6 +325,8 @@
 \RequirePackage{array}
 % Sortörés táblázat cellákban
 \RequirePackage{makecell}
+% Táblázatjegyzék elnevezése	
+\renewcommand{\listtablename}{\lsttablelabel}
 % ------------------------------
 
 % ------------------------------
@@ -272,7 +388,9 @@
 \renewcommand{\nomlabel}[1]{\hfil \hfil #1}
 % Oldalhivatkozás megjelenése
 \renewcommand{\pagedeclaration}[1]{, #1}
-% Jelölésjegyzék elkészítse (még nem szúrja be)
+% Jelölésjegyzék elnevezése
+\renewcommand{\nomname}{\lstnomencl}
+% Jelölésjegyzék elkészítése (még nem szúrja be)
 \makenomenclature
 % ------------------------------
 
@@ -302,8 +420,14 @@
 	frame=linesc,
 	captionpos=b
 }
+% Forráskód elnevezése
+\renewcommand{\lstlistingname}{\codelabel}
+% Forráskódjegyzék elnevezése
+\renewcommand{\lstlistlistingname}{\lstcodelabel}
 % Algoritmus kommentek jobb szélre igazítása
 \renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
+% Algoritmus elnevezése
+\renewcommand{\ALG@name}{\alglabel}
 % ------------------------------
 
 % ------------------------------
@@ -314,101 +438,6 @@
 % A bal margóra kerüljenek a TODO-k
 \reversemarginpar
 \setlength{\marginparwidth}{30mm}
-% ------------------------------
-
-% ------------------------------
-% Metaadatok
-\RequirePackage{xparse}
-\DeclareDocumentCommand{\author}{m}{\newcommand{\authorname}{#1}\renewcommand{\@author}{#1}}
-\NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
-
-\NewDocumentCommand{\supervisor}{m}{\newcommand{\supname}{#1}}
-\NewDocumentCommand{\affiliation}{m}{\newcommand{\supaff}{#1}}
-
-\NewDocumentCommand{\extsupervisor}{m}{\newcommand{\extsupname}{#1}}
-\NewDocumentCommand{\extaffiliation}{m}{\newcommand{\extsupaff}{#1}}
-
-\NewDocumentCommand{\university}{m}{\newcommand{\univname}{#1}}
-\NewDocumentCommand{\faculty}{m}{\newcommand{\facname}{#1}}
-\NewDocumentCommand{\department}{m}{\newcommand{\deptname}{#1}}
-\NewDocumentCommand{\city}{m}{\newcommand{\cityname}{#1}}
-\NewDocumentCommand{\logo}{m}{\newcommand{\logofilename}{#1}}
-
-\DeclareDocumentCommand{\title}{m}{\newcommand{\thesistitle}{#1}\renewcommand{\@title}{#1}}
-\DeclareDocumentCommand{\date}{m}{\newcommand{\thesisyear}{#1}\renewcommand{\@date}{#1}}
-% ------------------------------
-
-% ------------------------------
-% Fordítások
-\DeclareDocumentCommand{\documentlang}{m}{
-	\selectlanguage{#1}
-	
-	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{magyar}}}
-	{
-		\newcommand{\authorlabel}{Szerző}
-		\newcommand{\suplabel}{Témavezető}
-		\newcommand{\intsuplabel}{Belső témavezető}
-		\newcommand{\extsuplabel}{Külső témavezető}
-		
-		\newcommand{\deflabel}{Definíció}
-		\newcommand{\theolabel}{Tétel}
-		\newcommand{\remlabel}{Emlékeztető}
-		\newcommand{\notelabel}{Megjegyzés}
-		
-		\newcommand{\codelabel}{forráskód}
-		\newcommand{\alglabel}{Algoritmus}
-		
-		\newcommand{\biblabel}{Irodalomjegyzék}
-		\newcommand{\lstfigurelabel}{Ábrajegyzék}
-		\newcommand{\lsttablelabel}{Táblázatjegyzék}		
-		\newcommand{\lstcodelabel}{Forráskódjegyzék}
-		\newcommand{\lstnomencl}{Jelölésjegyzék}
-		\newcommand{\todolabel}{Teendők listája}
-	}
-	{
-		\newcommand{\authorlabel}{Author}
-		\newcommand{\suplabel}{Supervisor}
-		\newcommand{\intsuplabel}{Internal supervisor}
-		\newcommand{\extsuplabel}{External supervisor}
-		
-		\newcommand{\deflabel}{Definiton}
-		\newcommand{\theolabel}{Theorem}
-		\newcommand{\remlabel}{Remark}
-		\newcommand{\notelabel}{Note}		
-		
-		\newcommand{\codelabel}{Code}		
-		\newcommand{\alglabel}{Algorithm}
-		
-		\newcommand{\biblabel}{Bibliograhpy}
-		\newcommand{\lstfigurelabel}{List of Figures}
-		\newcommand{\lsttablelabel}{List of Tables}
-		\newcommand{\lstcodelabel}{List of Codes}		
-		\newcommand{\lstnomencl}{List of Symbols}
-		\newcommand{\todolabel}{Todo list}
-	}
-
-	% Forráskód elnevezése
-	\renewcommand{\lstlistingname}{\codelabel}
-	% Algoritmus elnevezése
-	\renewcommand{\ALG@name}{\alglabel}
-
-	% Ábrajegyzék elnevezése
-	\renewcommand{\listfigurename}{\lstfigurelabel}
-	% Táblázatjegyzék elnevezése	
-	\renewcommand{\listtablename}{\lsttablelabel}
-	% Forráskódjegyzék elnevezése
-	\renewcommand{\lstlistlistingname}{\lstcodelabel}
-	% Jelölésjegyzék elnevezése
-	\renewcommand{\nomname}{\lstnomencl}
-}
-% ------------------------------
-
-% ------------------------------
-% Tételek, definíciók
-\newtheorem{definition}{\deflabel}
-\newtheorem{theorem}{\theolabel}
-\newtheorem*{remark}{\remlabel}
-\newtheorem*{note}{\notelabel}
 % ------------------------------
 
 % ------------------------------
