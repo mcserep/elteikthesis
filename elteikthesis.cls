@@ -1,6 +1,6 @@
 %% MIT License
 %%
-%% Version 1.2, 2019/06/09
+%% Version 1.3, 2019/06/10
 %% Copyright (c) 2013-2019 Máté Cserép, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,7 +22,7 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2019/06/09 ELTE FI bachelor and master thesis template]
+\ProvidesClass{elteikthesis}[2019/06/10 ELTE FI bachelor and master thesis template]
 
 % LaTeX programozói eszközök
 \RequirePackage{etoolbox}
