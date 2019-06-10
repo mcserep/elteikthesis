@@ -13,14 +13,14 @@ A sablon magyar és angol nyelvű dokumentumok elkészítését is támogatja (l
 
 ```bash
 # thesis.aux fájl generálása (PDF fájl még hibás hivatkozásokat fog tartalmazni)
-pdflatex thesis.pdf
+pdflatex thesis.tex
 # Irodalomjegyzék generálása
 bibtex thesis
 # Jelölésjegyzék generálása (ha szükséges)
 makeindex -s nomencl.ist -t thesis.nlg -o thesis.nls thesis.nlo
 # Végleges PDF fájl generálása
-pdflatex thesis.pdf
-pdflatex thesis.pdf
+pdflatex thesis.tex
+pdflatex thesis.tex
 ```
 
 **Megjegyzés:** az irodalomjegyzék változása esetén a `bibtex`, majd a `pdflatex` _kétszeri_ futtatása szükséges a helyes hivatkozások előállításához.
