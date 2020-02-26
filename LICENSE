@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2013-2019 Máté Cserép, Bálint Bognár
+Copyright (c) 2013-2020 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+--------------------------------------------------------------------------------
+
+The original 1.x versions of the CTAN package were developed by
+Dániel Majoros, under the LaTeX Project Public License version 1.2.
+This updated work is a complete rewrite with no connection
+to the original package.
