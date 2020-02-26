@@ -24,7 +24,7 @@
 %% -----------------------------------------------------------------------------
 %%
 %% The original 1.x versions of the CTAN package were developed by
-%% Dániel Majoros, under the LaTeX Project Public License version 1.2.
+%% Dániel Majoros, under the LaTeX Project Public License version 1.2 or later.
 %% This updated work is a complete rewrite with no connection
 %% to the original package.
 
