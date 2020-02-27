@@ -28,20 +28,24 @@ Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https
 ## Required packages (without completeness)
 
 **Image handling:**
+
 * Minimal and maximal size: [adjustbox](https://ctan.org/pkg/adjustbox)
 * Subfigures: [subfigure](https://ctan.org/pkg/subfigure)
 * Rotation: [rotating](https://ctan.org/pkg/rotating)
 
 **Table management:**
+
 * Multirow and multicolumn support: [multirow](https://ctan.org/pkg/multirow)
 * Breakable tables: [longtable](https://ctan.org/pkg/longtable)
 * Vertical positioning of cells: [array](https://ctan.org/pkg/array)
 * Multiline cells (line breaks): [makecell](https://ctan.org/pkg/makecell)
 
 **Lists:**
+
 * Lists with narrow spacing: [paralist](https://ctan.org/pkg/paralist)
 
 **Mathematical formulas and algorithms:**
+
 * Mathematical formulas: [amsmath](https://ctan.org/pkg/amsmath)
 * Mathematical definitions: [amsthm](https://ctan.org/pkg/amsthm)
 * Mathematical symbols: [amsfonts](https://ctan.org/pkg/amsfonts)
@@ -49,6 +53,7 @@ Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https
 * Code blocks: [listingsutf8](https://ctan.org/pkg/listingsutf8)
 
 **Miscellaneous:**
+
 * Todos: [todonotes](https://ctan.org/pkg/todonotes)
 
 ## Predefined theorem-like environments

@@ -1,7 +1,7 @@
 %% MIT License
 %%
-%% Version 1.3, 2019/06/10
-%% Copyright (c) 2013-2019 Máté Cserép, Bálint Bognár
+%% Version 2.0, 2020/02/26
+%% Copyright (c) 2013-2020 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
 %% of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2019/06/10 ELTE FI bachelor and master thesis template]
+\ProvidesClass{elteikthesis}[2020/02/26 ELTE FI bachelor and master thesis template]
 
 % LaTeX programozói eszközök
 \RequirePackage{etoolbox}
@@ -99,8 +99,8 @@
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
 		\newcommand{\lstnomencl}{Jelölésjegyzék}
 		\newcommand{\todolabel}{Teendők listája}
-		
-		\newcommand{\declarationplaceholder}{Az eredeti szakdolgozati / diplomamunka témabjelentő helye.}
+
+		\newcommand{\declarationplaceholder}{Az eredeti szakdolgozati / diplomamunka témabejelentő helye.}
 	}
 	{ % Angol
 		\newcommand{\authorlabel}{Author}
@@ -108,7 +108,7 @@
 		\newcommand{\intsuplabel}{Internal supervisor}
 		\newcommand{\extsuplabel}{External supervisor}
 
-		\newcommand{\deflabel}{Definiton}
+		\newcommand{\deflabel}{Definition}
 		\newcommand{\theolabel}{Theorem}
 		\newcommand{\remlabel}{Remark}
 		\newcommand{\notelabel}{Note}
@@ -116,13 +116,13 @@
 		\newcommand{\codelabel}{Code}
 		\newcommand{\alglabel}{Algorithm}
 
-		\newcommand{\biblabel}{Bibliograhpy}
+		\newcommand{\biblabel}{Bibliography}
 		\newcommand{\lstfigurelabel}{List of Figures}
 		\newcommand{\lsttablelabel}{List of Tables}
 		\newcommand{\lstcodelabel}{List of Codes}
 		\newcommand{\lstnomencl}{List of Symbols}
 		\newcommand{\todolabel}{Todo list}
-		
+
 		\newcommand{\declarationplaceholder}{This page should be the original Thesis Topic Declaration.}
 	}
 }
@@ -516,9 +516,9 @@
 	\thispagestyle{empty}
 	\begin{center}
 		\vspace*{\fill}
-		
+
 		{\large \declarationplaceholder}
-		
+
 		\vspace*{\fill}
 	\end{center}
 
