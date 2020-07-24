@@ -1,6 +1,6 @@
 # ELTE IK szakdolgozat és diplomamunka sablon
 
-A [thesis.tex](thesis.tex) és a belőle előálló [thesis.pdf](thesis.pdf) szolgál kiindulási példaként.
+A [elteikthesis.tex](elteikthesis.tex) és a belőle előálló [elteikthesis.pdf](elteikthesis.pdf) szolgál kiindulási példaként.
 A sablon alkalmazza a szakdolgozatra / diplomamunkára vonatkozó formai előírásokat, valamint elkészíti a megadott metaadatok alapján a címlapot. A példa dokumentum tartalmi fejezetei a BSc szakdolgozat tipikus felépítését tükrözik.
 A formai megkötések az ELTE Informatikai Kar szabályzatában rögzítetteknek felelnek meg, de általánosan (a megfelelő módosításokkal) alkalmazható más egyetemek dolgozataihoz is.
 
@@ -10,15 +10,17 @@ A sablon magyar és angol nyelvű dokumentumok elkészítését is támogatja (l
 ## Fordítás
 
 ```bash
-# thesis.aux fájl generálása (PDF fájl még hibás hivatkozásokat fog tartalmazni)
-pdflatex thesis.tex
+# elteikthesis.aux fájl generálása
+# (PDF fájl még hibás hivatkozásokat fog tartalmazni)
+pdflatex elteikthesis.tex
 # Irodalomjegyzék generálása
-bibtex thesis
+bibtex elteikthesis
 # Jelölésjegyzék generálása (ha szükséges)
-makeindex -s nomencl.ist -t thesis.nlg -o thesis.nls thesis.nlo
+makeindex -s nomencl.ist -t elteikthesis.nlg -o elteikthesis.nls \
+  elteikthesis.nlo
 # Végleges PDF fájl generálása
-pdflatex thesis.tex
-pdflatex thesis.tex
+pdflatex elteikthesis.tex
+pdflatex elteikthesis.tex
 ```
 
 **Megjegyzés:** az irodalomjegyzék változása esetén a `bibtex`, majd a `pdflatex` _kétszeri_ futtatása szükséges a helyes hivatkozások előállításához.
