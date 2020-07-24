@@ -1,3 +1,5 @@
+![CI status](https://github.com/mcserep/elteikthesis/workflows/Build%20LaTeX%20document/badge.svg)
+
 See [English version](README_en.md).
 
 # ELTE IK szakdolgozat és diplomamunka sablon
