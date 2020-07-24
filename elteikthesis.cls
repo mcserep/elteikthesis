@@ -1,6 +1,6 @@
 %% MIT License
 %%
-%% Version 2.0, 2020/02/26
+%% Version 2.1, 2020/05/15
 %% Copyright (c) 2013-2020 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,7 +29,7 @@
 %% to the original package.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2020/02/26 ELTE FI bachelor and master thesis template]
+\ProvidesClass{elteikthesis}[2020/05/15 ELTE FI bachelor and master thesis template]
 
 % LaTeX programozói eszközök
 \RequirePackage{etoolbox}
@@ -56,6 +56,14 @@
 
 % Osztály betöltése (alapértelmezett beállítások)
 \LoadClass[a4paper, 12pt, oneside]{report}
+% ------------------------------
+
+% ------------------------------
+% Karakterkódolás, nyelv
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english,magyar]{babel}
+\RequirePackage{indentfirst}
 % ------------------------------
 
 % ------------------------------
@@ -184,14 +192,6 @@
    {\pagestyle{empty}\origdoublepage}
  }
 \let\cleardoublepage\clearemptydoublepage
-% ------------------------------
-
-% ------------------------------
-% Karakterkódolás, nyelv
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
-\RequirePackage[english,magyar]{babel}
-\RequirePackage{indentfirst}
 % ------------------------------
 
 % ------------------------------
