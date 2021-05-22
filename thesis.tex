@@ -85,24 +85,28 @@
 
 % Irodalomjegyzék (kötelező)
 % Bibliography (mandatory)
+\phantomsection
 \addcontentsline{toc}{chapter}{\biblabel}
 \printbibliography[title=\biblabel]
 \cleardoublepage
 
 % Ábrajegyzék (opcionális) - 3-5 ábra fölött érdemes
 % List of figures (optional) - useful over 3-5 figures
+\phantomsection
 \addcontentsline{toc}{chapter}{\lstfigurelabel}
 \listoffigures
 \cleardoublepage
 
 % Táblázatjegyzék (opcionális) - 3-5 táblázat fölött érdemes
 % List of tables (optional) - useful over 3-5 tables
+\phantomsection
 \addcontentsline{toc}{chapter}{\lsttablelabel}
 \listoftables
 \cleardoublepage
 
 % Forráskódjegyzék (opcionális) - 3-5 kódpélda fölött érdemes
 % List of codes (optional) - useful over 3-5 code samples
+\phantomsection
 \addcontentsline{toc}{chapter}{\lstcodelabel}
 \lstlistoflistings
 \cleardoublepage
