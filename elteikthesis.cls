@@ -104,6 +104,7 @@
 		\newcommand{\alglabel}{Algoritmus}
 
 		\newcommand{\biblabel}{Irodalomjegyzék}
+		\newcommand{\lstalgorithmlabel}{Algoritmusjegyzék}
 		\newcommand{\lstfigurelabel}{Ábrajegyzék}
 		\newcommand{\lsttablelabel}{Táblázatjegyzék}
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
@@ -127,6 +128,7 @@
 		\newcommand{\alglabel}{Algorithm}
 
 		\newcommand{\biblabel}{Bibliography}
+		\newcommand{\lstalgorithmlabel}{List of Algorithms}
 		\newcommand{\lstfigurelabel}{List of Figures}
 		\newcommand{\lsttablelabel}{List of Tables}
 		\newcommand{\lstcodelabel}{List of Codes}
@@ -463,7 +465,8 @@
 	\renewcommand{\lstlistlistingname}{\lstcodelabel}
 }
 % Algoritmus elnevezése
-\renewcommand{\ALG@name}{\alglabel}
+\floatname{algorithm}{\alglabel}
+\renewcommand{\listalgorithmname}{\lstalgorithmlabel}
 % ------------------------------
 
 % ------------------------------
