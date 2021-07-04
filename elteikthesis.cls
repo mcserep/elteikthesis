@@ -410,7 +410,7 @@
 % ------------------------------
 % Algoritmusok és kódblokkok írása
 \RequirePackage{algorithm}
-\RequirePackage{algorithmic}
+\RequirePackage{algpseudocode}
 \iftoggle{useminted}{
 	\RequirePackage[newfloat]{minted}
 	\setminted{
@@ -462,8 +462,6 @@
 	% Forráskódjegyzék elnevezése
 	\renewcommand{\lstlistlistingname}{\lstcodelabel}
 }
-% Algoritmus kommentek jobb szélre igazítása
-\renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
 % Algoritmus elnevezése
 \renewcommand{\ALG@name}{\alglabel}
 % ------------------------------
