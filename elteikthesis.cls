@@ -360,6 +360,9 @@
 % ------------------------------
 % Számozott elemek kezelése
 \RequirePackage{chngcntr}
+% Lábjegyzet folytonos számozása fejezetek között
+% Continuous counting of footnotes among chapters
+\counterwithout{footnote}{chapter}
 % Lábjegyzet oldalak közti eltörésének tiltása
 \interfootnotelinepenalty=10000
 % ------------------------------
@@ -564,5 +567,18 @@
 			name=\codelabel,        % Forráskód elnevezése
 			listname=\lstcodelabel, % Forráskódjegyzék elnevezése
 		}
+	}
+
+	% Az oldalszámozás a tartalomjegyzékkel kezdődik, de ott nem látható
+	\let\oldtableofcontents\tableofcontents
+	\renewcommand{\tableofcontents}{
+		\pagenumbering{gobble}
+		\oldtableofcontents
+		\cleardoublepage
+		% Oldalszám mentése és betöltésem mert a \pagenumbering visszállítja
+		\newcounter{conpageno}
+		\defcounter{conpageno}{\value{page}}
+		\pagenumbering{arabic}
+		\setcounter{page}{\value{conpageno}}
 	}
 }
