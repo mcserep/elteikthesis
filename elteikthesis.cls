@@ -411,7 +411,7 @@
 % ------------------------------
 % Algoritmusok és kódblokkok írása
 \RequirePackage{algorithm}
-\RequirePackage{algorithmic}
+\RequirePackage{algpseudocode}
 \RequirePackage{listingsutf8}
 \lstset{
 	basicstyle=\footnotesize\ttfamily,
@@ -438,8 +438,6 @@
 \renewcommand{\lstlistingname}{\codelabel}
 % Forráskódjegyzék elnevezése
 \renewcommand{\lstlistlistingname}{\lstcodelabel}
-% Algoritmus kommentek jobb szélre igazítása
-\renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
 % Algoritmus elnevezése
 \renewcommand{\ALG@name}{\alglabel}
 % ------------------------------
