@@ -53,8 +53,13 @@
 
 % ------------------------------
 % Karakterkódolás, nyelv
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
+\RequirePackage{iftex} % XeTex or LuaTex
+\iftutex
+	\RequirePackage{fontspec}
+\else % other (PdfTex)
+	\RequirePackage[utf8]{inputenc}
+	\RequirePackage[T1]{fontenc}
+\fi
 \RequirePackage[english,magyar]{babel}
 \RequirePackage{indentfirst}
 % ------------------------------
