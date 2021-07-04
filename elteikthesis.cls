@@ -290,8 +290,13 @@
 
 % ------------------------------
 % Tételek, definíciók
+\theoremstyle{definition}
 \newtheorem{definition}{\deflabel}
+
+\theoremstyle{plain}
 \newtheorem{theorem}{\theolabel}
+
+\theoremstyle{remark}
 \newtheorem*{remark}{\remlabel}
 \newtheorem*{note}{\notelabel}
 % ------------------------------
