@@ -194,7 +194,7 @@
 % Maximális ill. minimális méret megadása ábráknak
 \RequirePackage[export]{adjustbox}
 % Több ábra egy figure-on belül
-\RequirePackage[center]{subfigure}
+\RequirePackage{subcaption}
 % Ábrák forgatása
 \RequirePackage{rotating}
 
@@ -374,7 +374,7 @@
 % ------------------------------
 % Feliratok, tartalomjegyzék, ábrajegyzék, táblázatjegyzék
 \RequirePackage[justification=centering]{caption}
-\RequirePackage[subfigure]{tocloft}
+\RequirePackage{tocloft}
 
 % ------------------------------
 
