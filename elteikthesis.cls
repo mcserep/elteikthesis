@@ -35,6 +35,7 @@
 \newtoggle{hypenation}\toggletrue{hypenation}
 \newtoggle{parspace}\togglefalse{parspace}
 \newtoggle{indent}\toggletrue{indent}
+\newtoggle{useminted}\togglefalse{useminted}
 
 \DeclareOption{nohyp}{\togglefalse{hypenation}}
 \DeclareOption{parspace}{\toggletrue{parspace}}
@@ -44,6 +45,7 @@
 	\PassOptionsToClass{openright}{report}
 	\togglefalse{oneside}
 }
+\DeclareOption{minted}{\toggletrue{useminted}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions \relax
 
@@ -306,9 +308,6 @@
 \RequirePackage{color}
 \RequirePackage{xcolor}
 % Színek
-\definecolor{codebackg}{rgb}{0.95,0.95,0.95}
-\definecolor{codecomment}{rgb}{0,0.6,0}
-\definecolor{codestring}{rgb}{0.58,0,0.82}
 \colorlet{todobackg}{orange!10}
 % ------------------------------
 
@@ -407,32 +406,57 @@
 % Algoritmusok és kódblokkok írása
 \RequirePackage{algorithm}
 \RequirePackage{algorithmic}
-\RequirePackage{listingsutf8}
-\lstset{
-	basicstyle=\footnotesize\ttfamily,
-	numbers=left,
-    numberstyle=\tiny,
-    backgroundcolor=\color{codebackg},
-	keywordstyle=\color{blue},
-	commentstyle=\color{codecomment},
-	stringstyle=\color{codestring},
-	stepnumber=1,
-	firstnumber=1,
-	numbersep=5pt,
-	showspaces=false,
-	showstringspaces=false,
-	showtabs=false,
-	tabsize=2,
-	breaklines=true,
-	breakatwhitespace=false,
-	float,
-	frame=linesc,
-	captionpos=b
+\iftoggle{useminted}{
+	\RequirePackage[newfloat]{minted}
+	\setminted{
+		style=autumn,
+		numbers=left,
+		stepnumber=1,
+		firstnumber=1,
+		numbersep=5pt,
+		showspaces=false,
+		showtabs=false,
+		tabsize=2,
+		breaklines=true,
+		frame=lines,
+	}
+	\SetupFloatingEnvironment{listing}{
+		name=\codelabel,        % Forráskód elnevezése
+		listname=\lstcodelabel, % Forráskódjegyzék elnevezése
+	}
 }
-% Forráskód elnevezése
-\renewcommand{\lstlistingname}{\codelabel}
-% Forráskódjegyzék elnevezése
-\renewcommand{\lstlistlistingname}{\lstcodelabel}
+{
+	\definecolor{codebackg}{rgb}{0.95,0.95,0.95}
+	\definecolor{codecomment}{rgb}{0,0.6,0}
+	\definecolor{codestring}{rgb}{0.58,0,0.82}
+
+	\RequirePackage{listingsutf8}
+	\lstset{
+		basicstyle=\footnotesize\ttfamily,
+		numbers=left,
+		numberstyle=\tiny,
+		backgroundcolor=\color{codebackg},
+		keywordstyle=\color{blue},
+		commentstyle=\color{codecomment},
+		stringstyle=\color{codestring},
+		stepnumber=1,
+		firstnumber=1,
+		numbersep=5pt,
+		showspaces=false,
+		showstringspaces=false,
+		showtabs=false,
+		tabsize=2,
+		breaklines=true,
+		breakatwhitespace=false,
+		float,
+		frame=lines,
+		captionpos=b
+	}
+	% Forráskód elnevezése
+	\renewcommand{\lstlistingname}{\codelabel}
+	% Forráskódjegyzék elnevezése
+	\renewcommand{\lstlistlistingname}{\lstcodelabel}
+}
 % Algoritmus kommentek jobb szélre igazítása
 \renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
 % Algoritmus elnevezése

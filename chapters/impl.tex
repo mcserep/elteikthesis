@@ -51,8 +51,8 @@ e^{i \times \pi} + 1 = 0
 
 Nulla sodales purus id mi consequat, eu venenatis odio pharetra. Cras a arcu quam. Suspendisse augue risus, pulvinar a turpis et, commodo aliquet turpis. Nulla aliquam scelerisque mi eget pharetra. Mauris sed posuere elit, ac lobortis metus. Proin lacinia sit amet diam sed auctor. Nam viverra orci id sapien sollicitudin, a aliquam lacus suscipit. Quisque ac tincidunt leo Code~\ref{src:cpp} and \ref{src:csharp}:
 
-\lstset{caption={Hello World in C++}, label=src:cpp}
-\begin{lstlisting}[language={C++}]
+\begin{listing}
+\begin{minted}{c++}
 #include <stdio>
 
 int main() 
@@ -65,10 +65,12 @@ int main()
 	
 	return 0;
 }
-\end{lstlisting}
+\end{minted}
+\caption{Hello World in C++}\label{src:cpp}
+\end{listing}
 
-\lstset{caption={Hello World in C\#}, label=src:csharp}
-\begin{lstlisting}[language={[Sharp]C}]
+\begin{listing}
+\begin{minted}{csharp}
 using System;
 namespace HelloWorld
 {
@@ -83,7 +85,9 @@ namespace HelloWorld
 		}
 	}
 }
-\end{lstlisting}
+\end{minted}
+\caption{Hello World in C\#}\label{src:csharp}
+\end{listing}
 
 \subsection{Algoritmusok} % Algorithms
 
