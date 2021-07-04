@@ -144,6 +144,13 @@
 % ------------------------------
 
 % ------------------------------
+% Margók
+\RequirePackage[left=35mm, right=25mm, top=25mm, bottom=25mm, headheight=16pt]{geometry}
+%\setlength{\textwidth}{150mm}
+%\setlength{\textheight}{247mm}
+% ------------------------------
+
+% ------------------------------
 % Fejlécek és láblécek
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
@@ -219,13 +226,6 @@
 % Papírméret
 \paperwidth 210mm
 \paperheight 297mm
-% ------------------------------
-
-% ------------------------------
-% Margók
-\RequirePackage[left=35mm, right=25mm, top=25mm, bottom=25mm]{geometry}
-%\setlength{\textwidth}{150mm}
-%\setlength{\textheight}{247mm}
 % ------------------------------
 
 % ------------------------------
