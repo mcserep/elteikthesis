@@ -247,7 +247,6 @@
 
 % ------------------------------
 % Helyközök és tördelés
-\linespread{1.5}
 % Egyszeres helyköz a mondatok végén
 \frenchspacing
 % Szavak jobb margón túlnyúlásának tiltása
@@ -256,10 +255,15 @@
 \nottoggle{hypenation}{\RequirePackage[none]{hyphenat}}{}
 
 % Beállítás alternatív módon
-%\RequirePackage{setspace}
-%\singlespacing		% ~1.0 linespread
-%\onehalfspacing	% ~1.3 linespread
-%\doublespacing		% ~1.6 linespread
+\RequirePackage{setspace}
+% According to
+% https://tex.stackexchange.com/questions/442030/setting-spaces-with-titlespacing-and-fonts
+% this matches the 1.5 linespacing in MS Word
+\setstretch{1.427465}
+
+% Vektorok és mátrixok egyszeres sorközzel
+% https://tex.stackexchange.com/questions/568084/problem-with-matrices-using-linespread
+\everydisplay=\expandafter{\the\everydisplay\linespread{1}\selectfont}
 
 % Azonos sorköz használata láblácben
 %\RequirePackage{footmisc}
