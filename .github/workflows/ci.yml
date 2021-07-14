@@ -13,3 +13,11 @@ jobs:
             thesis.tex
             minted-integration.tex
           latexmk_shell_escape: true
+      - name: Upload the compiled pdf
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: thesis
+          path: |
+            thesis.pdf
+            minted-integration.pdf
+          if-no-files-found: error
