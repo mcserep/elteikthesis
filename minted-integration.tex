@@ -1,0 +1,33 @@
+\documentclass{elteikthesis}[2020/11/23]
+
+\usepackage[newfloat]{minted}
+
+\begin{document}
+\documentlang{magyar}
+
+\chapter{Minted forráskód}
+\label{ch:chapter}
+
+\begin{listing}[H]
+\begin{minted}{cpp}
+#include <stdio>
+
+int main() 
+{
+	int c;
+	std::cout << "Hello World!" << std::endl;
+
+	std::cout << "Press any key to exit." << std::endl;
+	std::cin >> c;
+	
+	return 0;
+}
+\end{minted}
+\caption{Hello World in C++}
+\end{listing}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstcodelabel}
+\listoflistings
+
+\end{document}

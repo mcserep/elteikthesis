@@ -426,7 +426,7 @@
 	breaklines=true,
 	breakatwhitespace=false,
 	float,
-	frame=linesc,
+	frame=lines,
 	captionpos=b
 }
 % Forráskód elnevezése
@@ -531,3 +531,27 @@
 	\setcounter{page}{1}
 }
 % ------------------------------
+
+\AtBeginDocument{
+	% If the minted package is loaded, then provide a default for the formatting,
+	% and set the labels for the listings 
+	\@ifpackageloaded{minted}{
+		\setminted{
+			style=tango,
+			numbers=left,
+			stepnumber=1,
+			firstnumber=1,
+			numbersep=5pt,
+			showspaces=false,
+			showtabs=false,
+			tabsize=2,
+			breaklines=true,
+			frame=lines,
+			bgcolor=codebackg,
+		}
+		\SetupFloatingEnvironment{listing}{
+			name=\codelabel,        % Forráskód elnevezése
+			listname=\lstcodelabel, % Forráskódjegyzék elnevezése
+		}
+	}
+}

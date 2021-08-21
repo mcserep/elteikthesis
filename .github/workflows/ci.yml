@@ -9,4 +9,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@master
         with:
-          root_file: thesis.tex
+          root_file: |
+            thesis.tex
+            minted-integration.tex
+          latexmk_shell_escape: true
