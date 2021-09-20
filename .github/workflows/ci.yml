@@ -3,7 +3,7 @@ on: [push]
 jobs:
   build_latex:
     strategy:
-      matrix: 
+      matrix:
         engine: [pdflatex, lualatex]
     runs-on: ubuntu-latest
     steps:
@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - if: ${{ matrix.engine == 'pdflatex' }}
         name: Compile LaTeX document
-        uses: xu-cheng/latex-action@master
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: |
             thesis.tex
@@ -19,7 +19,7 @@ jobs:
           latexmk_shell_escape: true
       - if: ${{ matrix.engine == 'lualatex' }}
         name: Compile LaTeX document
-        uses: xu-cheng/latex-action@master
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: |
             thesis.tex
