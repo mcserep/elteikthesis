@@ -15,7 +15,7 @@ jobs:
         with:
           root_file: |
             elteikthesis.tex
-            minted-integration.tex
+            elteikthesis-minted.tex
           latexmk_shell_escape: true
       - if: ${{ matrix.engine == 'lualatex' }}
         name: Compile LaTeX document
@@ -23,7 +23,7 @@ jobs:
         with:
           root_file: |
             elteikthesis.tex
-            minted-integration.tex
+            elteikthesis-minted.tex
           latexmk_shell_escape: true
           latexmk_use_lualatex: true
       - name: Upload the compiled pdf
@@ -32,5 +32,5 @@ jobs:
           name: thesis-${{ matrix.engine }}
           path: |
             elteikthesis.pdf
-            minted-integration.pdf
+            elteikthesis-minted.pdf
           if-no-files-found: error
