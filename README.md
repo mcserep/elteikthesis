@@ -27,12 +27,17 @@ pdflatex elteikthesis.tex
 
 Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https://www.texstudio.org/)), given the same commands should be executed.
 
+## Syntax highlighting of code blocks
+
+The minted package is also supported for syntax  highlighting. For its usage the Python interpreter and the `Pygments` package must be installed as a prerequisite.
+See the `elteikthesis-minted.tex` file for example.
+
 ## Required packages (without completeness)
 
 **Image handling:**
 
 * Minimal and maximal size: [adjustbox](https://ctan.org/pkg/adjustbox)
-* Subfigures: [subfigure](https://ctan.org/pkg/subfigure)
+* Subfigures: [subcaption](https://ctan.org/pkg/subcaption)
 * Rotation: [rotating](https://ctan.org/pkg/rotating)
 
 **Table management:**
@@ -51,8 +56,8 @@ Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https
 * Mathematical formulas: [amsmath](https://ctan.org/pkg/amsmath)
 * Mathematical definitions: [amsthm](https://ctan.org/pkg/amsthm)
 * Mathematical symbols: [amsfonts](https://ctan.org/pkg/amsfonts)
-* Algorithms: [algorithmic](https://ctan.org/pkg/algorithms)
-* Code blocks: [listingsutf8](https://ctan.org/pkg/listingsutf8)
+* Algorithms: [algpseudocode](https://www.ctan.org/pkg/algorithmicx)
+* Code blocks: [listingsutf8](https://ctan.org/pkg/listingsutf8), [minted](https://ctan.org/pkg/minted)
 
 **Miscellaneous:**
 

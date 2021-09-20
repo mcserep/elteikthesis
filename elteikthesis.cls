@@ -1,7 +1,7 @@
 %% MIT License
 %%
-%% Version 2.1, 2020/05/15
-%% Copyright (c) 2013-2020 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
+%% Version 2.2, 2021/09/20
+%% Copyright (c) 2013-2021 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
 %% of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 %% to the original package.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2020/05/15 ELTE FI bachelor and master thesis template]
+\ProvidesClass{elteikthesis}[2021/09/20 ELTE FI bachelor and master thesis template]
 
 % LaTeX programozói eszközök
 \RequirePackage{etoolbox}
@@ -60,8 +60,13 @@
 
 % ------------------------------
 % Karakterkódolás, nyelv
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
+\RequirePackage{iftex} % XeTex or LuaTex
+\iftutex
+	\RequirePackage{fontspec}
+\else % other (PdfTex)
+	\RequirePackage[utf8]{inputenc}
+	\RequirePackage[T1]{fontenc}
+\fi
 \RequirePackage[english,magyar]{babel}
 \RequirePackage{indentfirst}
 % ------------------------------
@@ -109,6 +114,7 @@
 		\newcommand{\alglabel}{Algoritmus}
 
 		\newcommand{\biblabel}{Irodalomjegyzék}
+		\newcommand{\lstalgorithmlabel}{Algoritmusjegyzék}
 		\newcommand{\lstfigurelabel}{Ábrajegyzék}
 		\newcommand{\lsttablelabel}{Táblázatjegyzék}
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
@@ -132,6 +138,7 @@
 		\newcommand{\alglabel}{Algorithm}
 
 		\newcommand{\biblabel}{Bibliography}
+		\newcommand{\lstalgorithmlabel}{List of Algorithms}
 		\newcommand{\lstfigurelabel}{List of Figures}
 		\newcommand{\lsttablelabel}{List of Tables}
 		\newcommand{\lstcodelabel}{List of Codes}
@@ -141,6 +148,13 @@
 		\newcommand{\declarationplaceholder}{This page should be the original Thesis Topic Declaration.}
 	}
 }
+% ------------------------------
+
+% ------------------------------
+% Margók
+\RequirePackage[left=35mm, right=25mm, top=25mm, bottom=25mm, headheight=16pt]{geometry}
+%\setlength{\textwidth}{150mm}
+%\setlength{\textheight}{247mm}
 % ------------------------------
 
 % ------------------------------
@@ -201,7 +215,7 @@
 % Maximális ill. minimális méret megadása ábráknak
 \RequirePackage[export]{adjustbox}
 % Több ábra egy figure-on belül
-\RequirePackage[center]{subfigure}
+\RequirePackage{subcaption}
 % Ábrák forgatása
 \RequirePackage{rotating}
 
@@ -219,13 +233,6 @@
 % Papírméret
 \paperwidth 210mm
 \paperheight 297mm
-% ------------------------------
-
-% ------------------------------
-% Margók
-\RequirePackage[left=35mm, right=25mm, top=25mm, bottom=25mm]{geometry}
-%\setlength{\textwidth}{150mm}
-%\setlength{\textheight}{247mm}
 % ------------------------------
 
 % ------------------------------
@@ -254,7 +261,6 @@
 
 % ------------------------------
 % Helyközök és tördelés
-\linespread{1.5}
 % Egyszeres helyköz a mondatok végén
 \frenchspacing
 % Szavak jobb margón túlnyúlásának tiltása
@@ -263,10 +269,15 @@
 \nottoggle{hypenation}{\RequirePackage[none]{hyphenat}}{}
 
 % Beállítás alternatív módon
-%\RequirePackage{setspace}
-%\singlespacing		% ~1.0 linespread
-%\onehalfspacing	% ~1.3 linespread
-%\doublespacing		% ~1.6 linespread
+\RequirePackage{setspace}
+% According to
+% https://tex.stackexchange.com/questions/442030/setting-spaces-with-titlespacing-and-fonts
+% this matches the 1.5 linespacing in MS Word
+\setstretch{1.427465}
+
+% Vektorok és mátrixok egyszeres sorközzel
+% https://tex.stackexchange.com/questions/568084/problem-with-matrices-using-linespread
+\everydisplay=\expandafter{\the\everydisplay\linespread{1}\selectfont}
 
 % Azonos sorköz használata láblácben
 %\RequirePackage{footmisc}
@@ -293,8 +304,13 @@
 
 % ------------------------------
 % Tételek, definíciók
+\theoremstyle{definition}
 \newtheorem{definition}{\deflabel}
+
+\theoremstyle{plain}
 \newtheorem{theorem}{\theolabel}
+
+\theoremstyle{remark}
 \newtheorem*{remark}{\remlabel}
 \newtheorem*{note}{\notelabel}
 % ------------------------------
@@ -322,7 +338,7 @@
 % pdflatex-hez
 \newcommand{\hyperrefComp}{}
 
-\RequirePackage[pdfborder={0 0 0}, unicode, \hyperrefComp]{hyperref}
+\RequirePackage[pdfborder={0 0 0}, unicode, pdfusetitle, \hyperrefComp]{hyperref}
 \RequirePackage[all]{hypcap}
 \RequirePackage{url}
 \RequirePackage{bookmark}
@@ -351,6 +367,9 @@
 % ------------------------------
 % Számozott elemek kezelése
 \RequirePackage{chngcntr}
+% Lábjegyzet folytonos számozása fejezetek között
+% Continuous counting of footnotes among chapters
+\counterwithout{footnote}{chapter}
 % Lábjegyzet oldalak közti eltörésének tiltása
 \interfootnotelinepenalty=10000
 % ------------------------------
@@ -381,7 +400,7 @@
 % ------------------------------
 % Feliratok, tartalomjegyzék, ábrajegyzék, táblázatjegyzék
 \RequirePackage[justification=centering]{caption}
-\RequirePackage[subfigure]{tocloft}
+\RequirePackage{tocloft}
 
 % ------------------------------
 
@@ -409,7 +428,7 @@
 % ------------------------------
 % Algoritmusok és kódblokkok írása
 \RequirePackage{algorithm}
-\RequirePackage{algorithmic}
+\RequirePackage{algpseudocode}
 \RequirePackage{listingsutf8}
 \lstset{
 	basicstyle=\footnotesize\ttfamily,
@@ -429,17 +448,16 @@
 	breaklines=true,
 	breakatwhitespace=false,
 	float,
-	frame=linesc,
+	frame=lines,
 	captionpos=b
 }
 % Forráskód elnevezése
 \renewcommand{\lstlistingname}{\codelabel}
 % Forráskódjegyzék elnevezése
 \renewcommand{\lstlistlistingname}{\lstcodelabel}
-% Algoritmus kommentek jobb szélre igazítása
-\renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
 % Algoritmus elnevezése
-\renewcommand{\ALG@name}{\alglabel}
+\floatname{algorithm}{\alglabel}
+\renewcommand{\listalgorithmname}{\lstalgorithmlabel}
 % ------------------------------
 
 % ------------------------------
@@ -534,3 +552,40 @@
 	\setcounter{page}{1}
 }
 % ------------------------------
+
+\AtBeginDocument{
+	% If the minted package is loaded, then provide a default for the formatting,
+	% and set the labels for the listings 
+	\@ifpackageloaded{minted}{
+		\setminted{
+			style=tango,
+			numbers=left,
+			stepnumber=1,
+			firstnumber=1,
+			numbersep=5pt,
+			showspaces=false,
+			showtabs=false,
+			tabsize=2,
+			breaklines=true,
+			frame=lines,
+			bgcolor=codebackg,
+		}
+		\SetupFloatingEnvironment{listing}{
+			name=\codelabel,        % Forráskód elnevezése
+			listname=\lstcodelabel, % Forráskódjegyzék elnevezése
+		}
+	}
+
+	% Az oldalszámozás a tartalomjegyzékkel kezdődik, de ott nem látható
+	\let\oldtableofcontents\tableofcontents
+	\renewcommand{\tableofcontents}{
+		\pagenumbering{gobble}
+		\oldtableofcontents
+		\cleardoublepage
+		% Oldalszám mentése és betöltésem mert a \pagenumbering visszállítja
+		\newcounter{conpageno}
+		\defcounter{conpageno}{\value{page}}
+		\pagenumbering{arabic}
+		\setcounter{page}{\value{conpageno}}
+	}
+}

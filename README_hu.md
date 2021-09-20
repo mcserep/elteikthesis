@@ -27,12 +27,17 @@ pdflatex elteikthesis.tex
 
 A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStudio](https://www.texstudio.org/)), ugyanezen utasítások kiadásával.
 
+## Kódblokkok szintaxis kiemelése
+
+A *minted* csomag támogatott a forráskódok szedésére és szintaxis kiemelésére. Használatához szükséges a Python interpreter és a `Pygments` csomag telepítése.
+Lásd a `elteikthesis-minted.tex` fájlt példaként.
+
 ## Fontosabb függőségi csomagok
 
 **Képkezelés:**
 
 * Minimális és maximális méret: [adjustbox](https://ctan.org/pkg/adjustbox)
-* Alábrák: [subfigure](https://ctan.org/pkg/subfigure)
+* Alábrák: [subcaption](https://ctan.org/pkg/subcaption)
 * Forgatás: [rotating](https://ctan.org/pkg/rotating)
 
 **Táblázatkezelés:**
@@ -51,8 +56,8 @@ A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStu
 * Matematikai formulák: [amsmath](https://ctan.org/pkg/amsmath)
 * Matematikai definíciók: [amsthm](https://ctan.org/pkg/amsthm)
 * Matematikai szimbólumok: [amsfonts](https://ctan.org/pkg/amsfonts)
-* Algoritmusok: [algorithmic](https://ctan.org/pkg/algorithms)
-* Kódblokkok: [listingsutf8](https://ctan.org/pkg/listingsutf8)
+* Algoritmusok: [algpseudocode](https://www.ctan.org/pkg/algorithmicx)
+* Kódblokkok: [listingsutf8](https://ctan.org/pkg/listingsutf8), [minted](https://ctan.org/pkg/minted)
 
 **Egyebek:**
 

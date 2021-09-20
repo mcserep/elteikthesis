@@ -3,13 +3,18 @@
 	%noindent, % Bekezdésének első sora ne legyen behúzva / No indentation of first lines in each paragraph
 	%nohyp, % Szavak sorvégi elválasztásának tiltása / No hyphenation of words
 	%twoside, % Kétoldalas nyomtatás / Double sided format
+	%draft, % Gyorsabb fordítás ábrák rajzolása nélkül / Quicker draft compilation without rendering images
 	%final, % Teendők elrejtése / Set final to hide todos
-]{elteikthesis}[2020/05/15]
+]{elteikthesis}[2021/09/20]
+
+% A minted csomag támogatott a forráskódok szedésére
+% The minted package is also supported for source highlighting
+%\usepackage[newfloat]{minted}
 
 % Dolgozat metaadatai
 % Document's metadata
 \title{Dolgozat címe} % cím / title
-\date{2020} % védés éve / year of defense
+\date{2021} % védés éve / year of defense
 
 % Szerző metaadatai
 % Author's metadata
@@ -46,11 +51,7 @@
 
 % Teendők listája (final dokumentumban nincs)
 % List of todos (not in the final document)
-\listoftodos[\todolabel]
-
-% Dokumentum beállítások
-% Some document settings
-\input{settings.tex}
+%\listoftodos[\todolabel]
 
 % Címlap (kötelező)
 % Title page (mandatory)
@@ -84,24 +85,35 @@
 
 % Irodalomjegyzék (kötelező)
 % Bibliography (mandatory)
+\phantomsection
 \addcontentsline{toc}{chapter}{\biblabel}
 \printbibliography[title=\biblabel]
 \cleardoublepage
 
 % Ábrajegyzék (opcionális) - 3-5 ábra fölött érdemes
 % List of figures (optional) - useful over 3-5 figures
+\phantomsection
 \addcontentsline{toc}{chapter}{\lstfigurelabel}
 \listoffigures
 \cleardoublepage
 
 % Táblázatjegyzék (opcionális) - 3-5 táblázat fölött érdemes
 % List of tables (optional) - useful over 3-5 tables
+\phantomsection
 \addcontentsline{toc}{chapter}{\lsttablelabel}
 \listoftables
 \cleardoublepage
 
+% Algorithmusjegyzék
+% List of algorithms
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstalgorithmlabel}
+\listofalgorithms
+\cleardoublepage
+
 % Forráskódjegyzék (opcionális) - 3-5 kódpélda fölött érdemes
 % List of codes (optional) - useful over 3-5 code samples
+\phantomsection
 \addcontentsline{toc}{chapter}{\lstcodelabel}
 \lstlistoflistings
 \cleardoublepage
