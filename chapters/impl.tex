@@ -95,21 +95,21 @@ Példa forrása: \href{https://www.inf.u-szeged.hu/actacybernetica/}{Acta Cybern
 \label{alg:ibb} 
 \textbf{\underline{Funct}} IBB($S,f$)
 \begin{algorithmic}[1] % sorszámok megjelenítése minden n. sor előtt, most n = 1
-\STATE Set the working list ${\cal L}_W$ := $\{S\}$ and the final list ${\cal L}_Q$ := $\{\}$     
-\WHILE{( ${\cal L}_W \neq \emptyset$ )} \label{alg:igoend}
-	\STATE  Select an interval $X$ from ${\cal L}_W$ \label{step:selrule}\COMMENT{Selection rule}  
-	\STATE Compute $lbf(X)$ \COMMENT{Bounding rule}		  
-	\IF[Elimination rule]{$X$ cannot be eliminated}
-		\STATE Divide $X$ into $X^j,\ j=1,\dots, p$, subintervals   \COMMENT{Division rule}
-		\FOR{$j=1,\ldots,p$}
-			\IF[Termination rule]{$X^j$ satisfies the termination criterion}
-				\STATE Store $X^j$ in ${\cal L}_W$ 
-			\ELSE
-				\STATE Store $X^j$ in ${\cal L}_W$ 
-			\ENDIF
-		\ENDFOR  
-	\ENDIF
-\ENDWHILE
-\STATE \textbf{return} ${\cal L}_Q$
+\State Set the working list ${\cal L}_W$ := $\{S\}$ and the final list ${\cal L}_Q$ := $\{\}$     
+\While{( ${\cal L}_W \neq \emptyset$ )} \label{alg:igoend}
+	\State  Select an interval $X$ from ${\cal L}_W$ \label{step:selrule}\Comment{Selection rule}  
+	\State Compute $lbf(X)$ \Comment{Bounding rule}		  
+	\If{$X$ cannot be eliminated} \Comment{Elimination rule}
+		\State Divide $X$ into $X^j,\ j=1,\dots, p$, subintervals   \Comment{Division rule}
+		\For{$j=1,\ldots,p$}
+			\If{$X^j$ satisfies the termination criterion} \Comment{Termination rule}
+				\State Store $X^j$ in ${\cal L}_W$ 
+			\Else
+				\State Store $X^j$ in ${\cal L}_W$ 
+			\EndIf
+		\EndFor  
+	\EndIf
+\EndWhile
+\State \textbf{return} ${\cal L}_Q$
 \end{algorithmic}
 \end{algorithm}

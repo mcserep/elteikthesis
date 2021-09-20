@@ -2,11 +2,35 @@ name: Build LaTeX document
 on: [push]
 jobs:
   build_latex:
+    strategy:
+      matrix: 
+        engine: [pdflatex, lualatex]
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: Compile LaTeX document
+      - if: ${{ matrix.engine == 'pdflatex' }}
+        name: Compile LaTeX document
         uses: xu-cheng/latex-action@master
         with:
-          root_file: thesis.tex
+          root_file: |
+            thesis.tex
+            minted-integration.tex
+          latexmk_shell_escape: true
+      - if: ${{ matrix.engine == 'lualatex' }}
+        name: Compile LaTeX document
+        uses: xu-cheng/latex-action@master
+        with:
+          root_file: |
+            thesis.tex
+            minted-integration.tex
+          latexmk_shell_escape: true
+          latexmk_use_lualatex: true
+      - name: Upload the compiled pdf
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: thesis-${{ matrix.engine }}
+          path: |
+            thesis.pdf
+            minted-integration.pdf
+          if-no-files-found: error
