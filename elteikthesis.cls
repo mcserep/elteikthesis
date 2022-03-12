@@ -60,7 +60,7 @@
 	\RequirePackage[utf8]{inputenc}
 	\RequirePackage[T1]{fontenc}
 \fi
-\RequirePackage[english,magyar]{babel}
+\RequirePackage[english,hungarian]{babel}
 \RequirePackage{indentfirst}
 % ------------------------------
 
@@ -91,7 +91,7 @@
 	\selectlanguage{#1}
 
 	% Magyar
-	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{magyar}}}
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{hungarian}}}
 	{
 		\newcommand{\authorlabel}{Szerző}
 		\newcommand{\suplabel}{Témavezető}
@@ -382,7 +382,7 @@
 
 % ------------------------------
 % Irodalomjegyzék
-\RequirePackage[style=english]{csquotes}
+\RequirePackage[autostyle=true]{csquotes}
 \RequirePackage[
 	backend=bibtex,
 	style=numeric, % irodalomjegyzék stílusa
