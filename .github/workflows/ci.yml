@@ -14,7 +14,8 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: |
-            thesis.tex
+            thesis_hu.tex
+            thesis_en.tex
             minted-integration.tex
           latexmk_shell_escape: true
       - if: ${{ matrix.engine == 'lualatex' }}
@@ -22,7 +23,8 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: |
-            thesis.tex
+            thesis_hu.tex
+            thesis_en.tex
             minted-integration.tex
           latexmk_shell_escape: true
           latexmk_use_lualatex: true
@@ -31,6 +33,7 @@ jobs:
         with:
           name: thesis-${{ matrix.engine }}
           path: |
-            thesis.pdf
+            thesis_hu.pdf
+            thesis_en.pdf
             minted-integration.pdf
           if-no-files-found: error
