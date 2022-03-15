@@ -1,10 +1,10 @@
-\chapter{Fejlesztői dokumentáció} % Developer guide
+\chapter{Fejlesztői dokumentáció}
 \label{ch:impl}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nibh leo, dapibus in elementum nec, aliquet id sem. Suspendisse potenti. Nullam sit amet consectetur nibh. Donec scelerisque varius turpis at tincidunt.
 
 
-\section{Tételek, definíciók, megjegyzések} % Theorem-like items
+\section{Tételek, definíciók, megjegyzések}
 
 \begin{definition}
 Mauris tristique sollicitudin ultrices. Etiam tristique quam sit amet metus dictum imperdiet. Nunc id lorem sed nisl pulvinar aliquet vitae quis arcu. Morbi iaculis eleifend porttitor.
@@ -33,7 +33,7 @@ Aliquam vehicula luctus mi a pretium. Nulla quam neque, maximus nec velit in, al
 
 Ut sollicitudin tempus urna et mollis. Aliquam et aliquam turpis, sed fermentum mauris. Nulla eget ex diam. Donec eget tellus pharetra, semper neque eget, rutrum diam.
 
-\subsection{Egyenletek, matematika} % Equations, formulas
+\subsection{Egyenletek, matematika}
 
 Duis suscipit ipsum nec urna blandit, $2 + 2 = 4$ pellentesque vehicula quam fringilla. Vivamus euismod, lectus sit amet euismod viverra, dolor metus consequat sapien, ut hendrerit nisl nulla id nisi. Nam in leo eu quam sollicitudin semper a quis velit.
 
@@ -41,15 +41,15 @@ $$a^2 + b^2 = c^2$$
 
 Phasellus mollis, elit sed convallis feugiat, dolor quam dapibus nibh, suscipit consectetur lacus risus quis sem. Vivamus scelerisque porta odio, vitae euismod dolor accumsan ut.
 
-In mathematica, identitatem Euleri (equation est scriptor vti etiam notum) sit aequalitatem Equation~\ref{eq:euler}:
+In mathematica, identitatem Euleri (equation est scriptor vti etiam notum) sit aequalitatem \ref{eq:euler}.~egyenlet:
 \begin{equation}\label{eq:euler}
 e^{i \times \pi} + 1 = 0
 \end{equation}
 
 
-\section{Forráskódok} % Source code samples
+\section{Forráskódok}
 
-Nulla sodales purus id mi consequat, eu venenatis odio pharetra. Cras a arcu quam. Suspendisse augue risus, pulvinar a turpis et, commodo aliquet turpis. Nulla aliquam scelerisque mi eget pharetra. Mauris sed posuere elit, ac lobortis metus. Proin lacinia sit amet diam sed auctor. Nam viverra orci id sapien sollicitudin, a aliquam lacus suscipit. Quisque ac tincidunt leo Code~\ref{src:cpp} and \ref{src:csharp}:
+Nulla sodales purus id mi consequat, eu venenatis odio pharetra. Cras a arcu quam. Suspendisse augue risus, pulvinar a turpis et, commodo aliquet turpis. Nulla aliquam scelerisque mi eget pharetra. Mauris sed posuere elit, ac lobortis metus. Proin lacinia sit amet diam sed auctor. Nam viverra orci id sapien sollicitudin, a aliquam lacus suscipit. Quisque ac tincidunt leo \ref{src:cpp}. és \ref{src:csharp}.~forráskód:
 
 \lstset{caption={Hello World in C++}, label=src:cpp}
 \begin{lstlisting}[language={C++}]
@@ -85,29 +85,29 @@ namespace HelloWorld
 }
 \end{lstlisting}
 
-\subsection{Algoritmusok} % Algorithms
+\subsection{Algoritmusok}
 
-A general Interval Branch and Bound algorithm is shown in Algorithm~\ref{alg:ibb}. One of the following selection rules is applied in Step \ref{step:selrule}.\\
-Példa forrása: \href{https://www.inf.u-szeged.hu/actacybernetica/}{Acta Cybernetica (ez egy link)}.
+Az \ref{alg:ibb}.~algoritmus egy általános elágazás és korlátozás algoritmust (\emph{Branch and Bound algorithm}) mutat be. A \ref{step:selrule}.~lépésben egy megfelelő kiválasztási szabályt kell alkalmazni.
+Példa forrása: \href{https://www.inf.u-szeged.hu/actacybernetica/}{Acta Cybernetica (ez egy hiperlink)}.
 
 \begin{algorithm}[H]
-\caption{A general interval B\&B algorithm} 
-\label{alg:ibb} 
+\caption{A general interval B\&B algorithm}
+\label{alg:ibb}
 \textbf{\underline{Funct}} IBB($S,f$)
 \begin{algorithmic}[1] % sorszámok megjelenítése minden n. sor előtt, most n = 1
-\State Set the working list ${\cal L}_W$ := $\{S\}$ and the final list ${\cal L}_Q$ := $\{\}$     
+\State Set the working list ${\cal L}_W$ := $\{S\}$ and the final list ${\cal L}_Q$ := $\{\}$
 \While{( ${\cal L}_W \neq \emptyset$ )} \label{alg:igoend}
-	\State  Select an interval $X$ from ${\cal L}_W$ \label{step:selrule}\Comment{Selection rule}  
-	\State Compute $lbf(X)$ \Comment{Bounding rule}		  
+	\State Select an interval $X$ from ${\cal L}_W$ \label{step:selrule}\Comment{Selection rule}
+	\State Compute $lbf(X)$ \Comment{Bounding rule}
 	\If{$X$ cannot be eliminated} \Comment{Elimination rule}
 		\State Divide $X$ into $X^j,\ j=1,\dots, p$, subintervals   \Comment{Division rule}
 		\For{$j=1,\ldots,p$}
 			\If{$X^j$ satisfies the termination criterion} \Comment{Termination rule}
-				\State Store $X^j$ in ${\cal L}_W$ 
+				\State Store $X^j$ in ${\cal L}_W$
 			\Else
-				\State Store $X^j$ in ${\cal L}_W$ 
+				\State Store $X^j$ in ${\cal L}_W$
 			\EndIf
-		\EndFor  
+		\EndFor
 	\EndIf
 \EndWhile
 \State \textbf{return} ${\cal L}_Q$

@@ -12,23 +12,23 @@
 %\usepackage[newfloat]{minted}
 
 % Document's metadata
-\title{Dolgozat címe} % title
+\title{Title of the thesis} % title
 \date{2022} % year of defense
 
 % Author's metadata
-\author{Hallgató Hanga}
-\degree{programtervező informatikus BSc}
+\author{John Smith}
+\degree{Computer Science BSc}
 
 % Superivsor(s)' metadata
-\supervisor{Témavezető Tamás} % internal supervisor's name
-\affiliation{egyetemi tanársegéd} % internal supervisor's affiliation
-%\extsupervisor{Külső Kornél} % external supervisor's name
-%\extaffiliation{informatikai igazgató} % external supervisor's affiliation
+\supervisor{John Doe} % internal supervisor's name
+\affiliation{Assistant Lecturer} % internal supervisor's affiliation
+%\extsupervisor{Jane Doe} % external supervisor's name
+%\extaffiliation{Senior Developer} % external supervisor's affiliation
 
 % University's metadata
-\university{Eötvös Loránd Tudományegyetem} % university's name
-\faculty{Informatikai Kar} % faculty's name
-\department{Programozáselmélet és Szoftvertechnológiai\\ Tanszék} % department's name
+\university{Eötvös Loránd University} % university's name
+\faculty{Faculty of Informatics} % faculty's name
+\department{Dept. of Software Technology and Methodology} % department's name
 \city{Budapest} % city
 \logo{elte_cimer_szines} % logo
 
@@ -39,8 +39,8 @@
 \begin{document}
 
 % Set document language
-\documentlang{hungarian}
-%\documentlang{english}
+%\documentlang{hungarian}
+\documentlang{english}
 
 % List of todos (not in the final document)
 %\listoftodos[\todolabel]
@@ -54,21 +54,21 @@
 \cleardoublepage
 
 % Main content
-\input{chapters/intro.tex}
+\input{samples_en/intro.tex}
 \cleardoublepage
 
-\input{chapters/user.tex}
+\input{samples_en/user.tex}
 \cleardoublepage
 
-\input{chapters/impl.tex}
+\input{samples_en/impl.tex}
 \cleardoublepage
 
-\input{chapters/sum.tex}
+\input{samples_en/sum.tex}
 \cleardoublepage
 
 % Appendices (optional) - useful for detailed information in long tables, many and/or large figures, etc.
 \appendix
-\input{appendices/sim.tex}
+\input{samples_en/sim.tex}
 \cleardoublepage
 
 % Bibliography (mandatory)
@@ -89,7 +89,7 @@
 \listoftables
 \cleardoublepage
 
-% List of algorithms
+% List of algorithms (optional) - useful over 3-5 algorithms
 \phantomsection
 \addcontentsline{toc}{chapter}{\lstalgorithmlabel}
 \listofalgorithms

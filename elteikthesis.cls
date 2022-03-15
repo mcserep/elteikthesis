@@ -104,7 +104,7 @@
 		\newcommand{\notelabel}{Megjegyzés}
 
 		\newcommand{\codelabel}{forráskód}
-		\newcommand{\alglabel}{Algoritmus}
+		\newcommand{\alglabel}{algoritmus}
 
 		\newcommand{\biblabel}{Irodalomjegyzék}
 		\newcommand{\lstalgorithmlabel}{Algoritmusjegyzék}
@@ -296,7 +296,7 @@
 % ------------------------------
 
 % ------------------------------
-% Theorems, definitions
+% Predefined theorem-like environments
 \theoremstyle{definition}
 \newtheorem{definition}{\deflabel}
 

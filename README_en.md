@@ -1,6 +1,6 @@
 # ELTE FI bachelor and master thesis template
 
-The [thesis.tex](thesis.tex) and the produced [thesis.pdf](thesis.pdf) serves as an example of usage.
+The [thesis_en.tex](thesis_en.tex) and the produced [thesis_en.pdf](thesis_en.pdf) serves as an example of usage.
 This class template enforces the required formatting rules for bachelor and master theses and generates the cover page given on the provided metadata. The chapters of the example document follows the typical structure of a BSc thesis.
 The formatting rules are defined to meet the requirements for theses submitted at the Eötvös Loránd University, Faculty of Informatics (Budapest, Hungary). However with sufficient modifications the template should be usable at other universities, too.
 
@@ -10,15 +10,15 @@ The template supports producing both Hungarian and English theses, which can be 
 ## Compilation
 
 ```bash
-# Generate thesis.aux file (PDF file contains incorrect references yet)
-pdflatex thesis.tex
+# Generate thesis_en.aux file (PDF file contains incorrect references yet)
+pdflatex thesis_en.tex
 # Generate bibliography
-bibtex thesis
+bibtex thesis_en
 # Generate nomenclature (optional)
-makeindex -s nomencl.ist -t thesis.nlg -o thesis.nls thesis.nlo
+makeindex -s nomencl.ist -t thesis_en.nlg -o thesis_en.nls thesis_en.nlo
 # Generate final PDF file
-pdflatex thesis.tex
-pdflatex thesis.tex
+pdflatex thesis_en.tex
+pdflatex thesis_en.tex
 ```
 
 **Note:** in case the bibliography changes, executing `bibtex`, then `pdflatex` _twice_ is required to generate to correct references in the PDF output.
