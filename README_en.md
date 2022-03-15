@@ -28,7 +28,7 @@ Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https
 ## Syntax highlighting of code blocks
 
 The minted package is also supported for syntax  highlighting. For its usage the Python interpreter and the `Pygments` package must be installed as a prerequisite.
-See the `minted-integration.tex` file for example.
+See the `minted-integration.tex` file for example and this [documentation](https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted).
 
 ## Required packages (without completeness)
 

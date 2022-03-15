@@ -24,13 +24,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{elteikthesis}[2021/09/20 ELTE FI bachelor and master thesis template]
 
-% LaTeX programozói eszközök
+% LaTeX programming tools
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
 \RequirePackage{ifthen}
 
 % ------------------------------
-% Paraméterek feldolgozása
+% Processing parameters
 \newtoggle{oneside}\toggletrue{oneside}
 \newtoggle{hypenation}\toggletrue{hypenation}
 \newtoggle{parspace}\togglefalse{parspace}
@@ -47,12 +47,12 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions \relax
 
-% Osztály betöltése (alapértelmezett beállítások)
+% Load document class (default settings)
 \LoadClass[a4paper, 12pt, oneside]{report}
 % ------------------------------
 
 % ------------------------------
-% Karakterkódolás, nyelv
+% Character encoding, language
 \RequirePackage{iftex} % XeTex or LuaTex
 \iftutex
 	\RequirePackage{fontspec}
@@ -65,7 +65,7 @@
 % ------------------------------
 
 % ------------------------------
-% Metaadatok
+% Metadata
 \DeclareDocumentCommand{\author}{m}{\newcommand{\authorname}{#1}\renewcommand{\@author}{#1}}
 \NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
 
@@ -86,11 +86,11 @@
 % ------------------------------
 
 % ------------------------------
-% Fordítások
+% Translations
 \DeclareDocumentCommand{\documentlang}{m}{
 	\selectlanguage{#1}
 
-	% Magyar
+	% Hungarian
 	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{hungarian}}}
 	{
 		\newcommand{\authorlabel}{Szerző}
@@ -116,7 +116,7 @@
 
 		\newcommand{\declarationplaceholder}{Az eredeti szakdolgozati / diplomamunka témabejelentő helye.}
 	}
-	{ % Angol
+	{ % English
 		\newcommand{\authorlabel}{Author}
 		\newcommand{\suplabel}{Supervisor}
 		\newcommand{\intsuplabel}{Internal supervisor}
@@ -144,54 +144,54 @@
 % ------------------------------
 
 % ------------------------------
-% Margók
+% Margin
 \RequirePackage[left=35mm, right=25mm, top=25mm, bottom=25mm, headheight=16pt]{geometry}
 %\setlength{\textwidth}{150mm}
 %\setlength{\textheight}{247mm}
 % ------------------------------
 
 % ------------------------------
-% Fejlécek és láblécek
+% Headers and footers
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 
-% Chapter és section információk stílusának felüldefiniálása
+% Overriding chapter and section marks
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}{}}
-% Fej- és lábléc vonalak beállítása
+% Set header and footer separator lines
 \renewcommand{\headrulewidth}{1pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Fejléc törlése
+% Clear default header style
 \fancyhead{}
-% Fejléc beállítása
-\iftoggle{oneside}{ % egyoldalashoz
+% Set new header style
+\iftoggle{oneside}{ % one sided format
 	\fancyhead[C]{\slshape \leftmark}
-}{ % kétoldalashoz
+}{ % double sided format
 	\fancyhead[EC]{\slshape \leftmark}
 	\fancyhead[OC]{\slshape \rightmark}
 }
 
-% Fejléc és lábléc távolsága a tartalomtól
+% Set header and footer margin from main content
 \topskip = 15pt		% default: 10pt
 \footskip = 40pt	% default: 30pt
 
-% Lábléc törlése
+% Clear default footer style
 \fancyfoot{}
-% Lábléc beállítása
+% Set new footer style
 \fancyfoot[C]{\thepage}
 
-% A chapter page-k mindig visszaállnak plain style-ra, ezért azt is felül kell külön definiálni.
+% Chapters are set back to plain style, therefore we need to override it
 \fancypagestyle{plain}{
-	% Fejléc vonal letiltása
+	% Disable header line
 	\renewcommand{\headrulewidth}{0pt}
-	% Teljes fejléc és lábléc törlés
+	% Completely erase header and footer
 	\fancyhf{}
-	% Lábléc beállítása
+	% Set new footer
     \fancyfoot[C]{\thepage}
 }
 
-% Üres oldalakon ne legyen fej- és lábléc
+% No header and footer on empty pages
 % http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
 \let\origdoublepage\cleardoublepage
  \newcommand{\clearemptydoublepage}{
@@ -202,93 +202,93 @@
 % ------------------------------
 
 % ------------------------------
-% Grafika
+% Graphics
 \RequirePackage{graphicx}
 \RequirePackage{float}
-% Maximális ill. minimális méret megadása ábráknak
+% Set maximum and minimum size for figures
 \RequirePackage[export]{adjustbox}
-% Több ábra egy figure-on belül
+% Subfigures
 \RequirePackage{subcaption}
-% Ábrák forgatása
+% Rotating figures
 \RequirePackage{rotating}
 
-% Az EPS fájlok támogatása pdflatex használata esetén
+% Support of EPS graphics with pdflatex
 \RequirePackage{epstopdf}
-% Képek kiterjesztési prioritása
+% Priority order of image extensions
 \DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg}
-% Képek tárolási helye
+% Default image path
 \graphicspath{{./images/}}
-% Ábrajegyzék elnevezése
+% Set name for List of Figures
 \renewcommand{\listfigurename}{\lstfigurelabel}
 % ------------------------------
 
 % ------------------------------
-% Papírméret
+% Paper size
 \paperwidth 210mm
 \paperheight 297mm
 % ------------------------------
 
 % ------------------------------
-% Térköz bekezdések közé
+% Set the spacing between paragraphs
 \iftoggle{parspace}{
 	\RequirePackage{parskip}
-	% A bekezdések első soros behúzása maradjon meg
+	% Keep the indention of the first line
 	\iftoggle{indent}{
 		\setlength{\parindent}{3.5ex}
 	}{}
 }{
-	% Nincs se térköz, se behúzás
+	% No spacing, no indentation
 	\nottoggle{indent}{
 		\RequirePackage[skip=0pt]{parskip}
 	}{
-		% alapértelmezés szerint nincs térköz, de van behúzás
+		% by default there is no spacing, but first lines are indented
 	}
 }
 % ------------------------------
 
 % ------------------------------
-% Árva- és fattyúsorok tiltása
+% Disable widow and orphan lines
 \clubpenalty=3000
 \widowpenalty=3000
 % ------------------------------
 
 % ------------------------------
-% Helyközök és tördelés
-% Egyszeres helyköz a mondatok végén
+% Line and word spacing
+% Single spacing at end of sentences
 \frenchspacing
-% Szavak jobb margón túlnyúlásának tiltása
+% Avoid overfull lines (text reaching over the right margin)
 \sloppy
-% Szavak elválasztásának tiltása
+% Disable word hyphenation
 \nottoggle{hypenation}{\RequirePackage[none]{hyphenat}}{}
 
-% Beállítás alternatív módon
+% Line spacing
 \RequirePackage{setspace}
 % According to
 % https://tex.stackexchange.com/questions/442030/setting-spaces-with-titlespacing-and-fonts
 % this matches the 1.5 linespacing in MS Word
 \setstretch{1.427465}
 
-% Vektorok és mátrixok egyszeres sorközzel
+% Display vectors and matrixes with single line spacing
 % https://tex.stackexchange.com/questions/568084/problem-with-matrices-using-linespread
 \everydisplay=\expandafter{\the\everydisplay\linespread{1}\selectfont}
 
-% Azonos sorköz használata láblácben
+% Use same line spacing in footer
 %\RequirePackage{footmisc}
 %\setlength{\footnotesep}{\baselineskip}
 % ------------------------------
 
 % ------------------------------
-% Nagybetűs szavak elválasztásának mellőzése
+% Do not hyphenate uppercase words
 \uchyph=0
 % ------------------------------
 
 % ------------------------------
-% Szoros térközű felsorolások
+% Lists with narrow spacing
 \RequirePackage{paralist}
 % ------------------------------
 
 % ------------------------------
-% Matematikai mód
+% Mathematical mode
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
@@ -296,7 +296,7 @@
 % ------------------------------
 
 % ------------------------------
-% Tételek, definíciók
+% Theorems, definitions
 \theoremstyle{definition}
 \newtheorem{definition}{\deflabel}
 
@@ -309,15 +309,15 @@
 % ------------------------------
 
 % ------------------------------
-% Times font használata
+% Use the Times font
 %\RequirePackage{mathptmx}
 % ------------------------------
 
 % ------------------------------
-% Színes szövegek
+% Colored texts
 \RequirePackage{color}
 \RequirePackage{xcolor}
-% Színek
+% Predefined colors
 \definecolor{codebackg}{rgb}{0.95,0.95,0.95}
 \definecolor{codecomment}{rgb}{0,0.6,0}
 \definecolor{codestring}{rgb}{0.58,0,0.82}
@@ -325,7 +325,7 @@
 % ------------------------------
 
 % ------------------------------
-% Hivatkozások
+% URL references
 % dvipdfm-hez
 %\newcommand{\hyperrefComp}{dvipdfm}
 % pdflatex-hez
@@ -338,88 +338,87 @@
 % ------------------------------
 
 % ------------------------------
-% Multirow és multicolumn táblázathoz
+% Multirow and multicolumn tables
 \RequirePackage{multirow}
-% Táblázatok tördelése több oldalra
+% Breakable tables over multiple pages
 \RequirePackage{longtable}
-% Celltartalmak vertikális igazítása
+% Vertical positioning of cells
 \RequirePackage{array}
-% Sortörés táblázat cellákban
+% Multiline cells (line breaks)
 \RequirePackage{makecell}
-% Táblázatjegyzék elnevezése
+% Set name for List of Tables
 \renewcommand{\listtablename}{\lsttablelabel}
 % ------------------------------
 
 % ------------------------------
-% Felső és alsó indexek
+% Superscripts and subscripts
 % http://anthony.liekens.net/index.php/LaTeX/SubscriptAndSuperscriptInTextMode
 \newcommand{\superscript}[1]{\ensuremath{^{\textrm{\scriptsize{#1}}}}}
 \newcommand{\subscript}[1]{\ensuremath{_{\textrm{\scriptsize{#1}}}}}
 % ------------------------------
 
 % ------------------------------
-% Számozott elemek kezelése
+% Manage counters
 \RequirePackage{chngcntr}
-% Lábjegyzet folytonos számozása fejezetek között
 % Continuous counting of footnotes among chapters
 \counterwithout{footnote}{chapter}
-% Lábjegyzet oldalak közti eltörésének tiltása
+% Avoid breaking footnotes over pages
 \interfootnotelinepenalty=10000
 % ------------------------------
 
 % ------------------------------
-% Lábjegyzet teljes körűbb támogatása (savenotes)
+% Extended support for footnotes (savenotes)
 %\RequirePackage{footnote}
-% Lábjegyzet kezelése minipage-ekben
+% Handle footnotes in minipages
 % http://www.cs.brown.edu/system/software/latex/doc/mpfnmark.pdf
 %\RequirePackage{mpfnmark}
 % ------------------------------
 
 % ------------------------------
-% Függelék
+% Appendix
 \RequirePackage{appendix}
 % ------------------------------
 
 % ------------------------------
-% Irodalomjegyzék
+% Bibliography
 \RequirePackage[autostyle=true]{csquotes}
 \RequirePackage[
 	backend=bibtex,
-	style=numeric, % irodalomjegyzék stílusa
-	sorting=none   % idézések rendezettségee
+	style=numeric, % style of bibliography
+	sorting=none   % sorting of references
 ]{biblatex}
 % ------------------------------
 
 % ------------------------------
-% Feliratok, tartalomjegyzék, ábrajegyzék, táblázatjegyzék
+% Captions, Table of Contents
 \RequirePackage[justification=centering]{caption}
 \RequirePackage{tocloft}
 
 % ------------------------------
 
 % ------------------------------
-% Tárgymutató
+% Index
 \RequirePackage{makeidx}
 \makeindex
 % ------------------------------
 
 % ------------------------------
-% Jelölésjegyzék
+% List of Symbols
 \RequirePackage[intoc,noprefix,refpage]{nomencl}
-% Elemek közötti bigskip kihagyása
+% Avoid bigskip between items
 \setlength{\nomitemsep}{-\parsep}
-% Jobbra igazítás
+% Right alignment
 \renewcommand{\nomlabel}[1]{\hfil \hfil #1}
-% Oldalhivatkozás megjelenése
+% Display page reference
 \renewcommand{\pagedeclaration}[1]{, #1}
-% Jelölésjegyzék elnevezése
+% Set name for List of Symbols
 \renewcommand{\nomname}{\lstnomencl}
-% Jelölésjegyzék elkészítése (még nem szúrja be)
+% Generate List of Symbols (does not insert it)
 \makenomenclature
 % ------------------------------
 
 % ------------------------------
-% Algoritmusok és kódblokkok írása
+% Algorithms and code blocks
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
 \RequirePackage{listingsutf8}
@@ -444,27 +443,26 @@
 	frame=lines,
 	captionpos=b
 }
-% Forráskód elnevezése
+% Set name for code blocks and List of Codes
 \renewcommand{\lstlistingname}{\codelabel}
-% Forráskódjegyzék elnevezése
 \renewcommand{\lstlistlistingname}{\lstcodelabel}
-% Algoritmus elnevezése
+% Set name for algorithm blocks and List of Algorithms
 \floatname{algorithm}{\alglabel}
 \renewcommand{\listalgorithmname}{\lstalgorithmlabel}
 % ------------------------------
 
 % ------------------------------
-% Teendőlista
+% List of TODOs
 % http://www.tex.ac.uk/tex-archive/help/Catalogue/entries/todonotes.html
 \RequirePackage[textwidth=30mm, textsize=small, color=todobackg, linecolor=orange, colorinlistoftodos, shadow, obeyFinal]{todonotes}
 \RequirePackage[displaymath, tightpage]{preview}
-% A bal margóra kerüljenek a TODO-k
+% Place TODOs on the left margin
 \reversemarginpar
 \setlength{\marginparwidth}{30mm}
 % ------------------------------
 
 % ------------------------------
-% Címlap
+% Cover page
 \renewcommand{\maketitle}{
 	\begin{titlepage}
 
@@ -529,7 +527,7 @@
 % ------------------------------
 
 % ------------------------------
-% Témabejelentő
+% Topic declaration page
 \newcommand{\topicdeclaration}{
 	\thispagestyle{empty}
 	\begin{center}
@@ -564,18 +562,18 @@
 			bgcolor=codebackg,
 		}
 		\SetupFloatingEnvironment{listing}{
-			name=\codelabel,        % Forráskód elnevezése
-			listname=\lstcodelabel, % Forráskódjegyzék elnevezése
+			name=\codelabel,        % set name for code blocks
+			listname=\lstcodelabel, % set name for List of Codes
 		}
 	}
 
-	% Az oldalszámozás a tartalomjegyzékkel kezdődik, de ott nem látható
+	% Page numbering starts with Table of Contents, but not shown there
 	\let\oldtableofcontents\tableofcontents
 	\renewcommand{\tableofcontents}{
 		\pagenumbering{gobble}
 		\oldtableofcontents
 		\cleardoublepage
-		% Oldalszám mentése és betöltésem mert a \pagenumbering visszállítja
+		% Save and load page number, because \pagenumbering resets it
 		\newcounter{conpageno}
 		\defcounter{conpageno}{\value{page}}
 		\pagenumbering{arabic}

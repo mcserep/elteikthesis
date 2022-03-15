@@ -32,7 +32,7 @@ A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStu
 ## Kódblokkok szintaxis kiemelése
 
 A *minted* csomag támogatott a forráskódok szedésére és szintaxis kiemelésére. Használatához szükséges a Python interpreter és a `Pygments` csomag telepítése.
-Lásd a `minted-integration.tex` fájlt példaként.
+Lásd a `minted-integration.tex` fájlt példaként és ezt a [dokumentációt](https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted).
 
 ## Fontosabb függőségi csomagok
 

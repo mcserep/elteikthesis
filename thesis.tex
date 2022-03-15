@@ -1,69 +1,58 @@
 \documentclass[
-	%parspace, % Térköz bekezdések közé / Add vertical space between paragraphs
-	%noindent, % Bekezdésének első sora ne legyen behúzva / No indentation of first lines in each paragraph
-	%nohyp, % Szavak sorvégi elválasztásának tiltása / No hyphenation of words
-	%twoside, % Kétoldalas nyomtatás / Double sided format
-	%draft, % Gyorsabb fordítás ábrák rajzolása nélkül / Quicker draft compilation without rendering images
-	%final, % Teendők elrejtése / Set final to hide todos
+	%parspace, % Add vertical space between paragraphs
+	%noindent, % No indentation of first lines in each paragraph
+	%nohyp, % No hyphenation of words
+	%twoside, % Double sided format
+	%draft, % Quicker draft compilation without rendering images
+	%final, % Set final to hide todos
 ]{elteikthesis}[2021/09/20]
 
-% A minted csomag támogatott a forráskódok szedésére
 % The minted package is also supported for source highlighting
+% See minted-intregration.tex for example
 %\usepackage[newfloat]{minted}
 
-% Dolgozat metaadatai
 % Document's metadata
-\title{Dolgozat címe} % cím / title
-\date{2021} % védés éve / year of defense
+\title{Dolgozat címe} % title
+\date{2022} % year of defense
 
-% Szerző metaadatai
 % Author's metadata
 \author{Hallgató Hanga}
 \degree{programtervező informatikus BSc}
 
-% Témavezető(k) metaadatai
 % Superivsor(s)' metadata
-\supervisor{Témavezető Tamás} % belső témavezető neve / internal supervisor's name
-\affiliation{egyetemi tanársegéd} % belső témavezető beosztása / internal supervisor's affiliation
-%\extsupervisor{Külső Kornél} % külső témavezető neve / external supervisor's name
-%\extaffiliation{informatikai igazgató} % külső témavezető beosztása / external supervisor's affiliation
+\supervisor{Témavezető Tamás} % internal supervisor's name
+\affiliation{egyetemi tanársegéd} % internal supervisor's affiliation
+%\extsupervisor{Külső Kornél} % external supervisor's name
+%\extaffiliation{informatikai igazgató} % external supervisor's affiliation
 
-% Egyetem metaadatai
 % University's metadata
-\university{Eötvös Loránd Tudományegyetem} % egyetem neve / university's name
-\faculty{Informatikai Kar} % kar neve / faculty's name
-\department{Programozáselmélet és Szoftvertechnológiai\\ Tanszék} % tanszék neve / department's name
-\city{Budapest} % város / city
+\university{Eötvös Loránd Tudományegyetem} % university's name
+\faculty{Informatikai Kar} % faculty's name
+\department{Programozáselmélet és Szoftvertechnológiai\\ Tanszék} % department's name
+\city{Budapest} % city
 \logo{elte_cimer_szines} % logo
 
-% Irodalomjegyzék hozzáadása
 % Add bibliography file
 \addbibresource{thesis.bib}
 
-% A dolgozat
 % The document
 \begin{document}
 
-% Nyelv kiválasztása
 % Set document language
 \documentlang{hungarian}
 %\documentlang{english}
 
-% Teendők listája (final dokumentumban nincs)
 % List of todos (not in the final document)
 %\listoftodos[\todolabel]
 
-% Címlap (kötelező)
 % Title page (mandatory)
 \maketitle
 \topicdeclaration
 
-% Tartalomjegyzék (kötelező)
 % Table of contents (mandatory)
 \tableofcontents
 \cleardoublepage
 
-% Tartalom
 % Main content
 \input{chapters/intro.tex}
 \cleardoublepage
@@ -77,48 +66,41 @@
 \input{chapters/sum.tex}
 \cleardoublepage
 
-% Függelékek (opcionális) - hosszabb részletező táblázatok, sok és/vagy nagy kép esetén hasznos
 % Appendices (optional) - useful for detailed information in long tables, many and/or large figures, etc.
 \appendix
 \input{appendices/sim.tex}
 \cleardoublepage
 
-% Irodalomjegyzék (kötelező)
 % Bibliography (mandatory)
 \phantomsection
 \addcontentsline{toc}{chapter}{\biblabel}
 \printbibliography[title=\biblabel]
 \cleardoublepage
 
-% Ábrajegyzék (opcionális) - 3-5 ábra fölött érdemes
 % List of figures (optional) - useful over 3-5 figures
 \phantomsection
 \addcontentsline{toc}{chapter}{\lstfigurelabel}
 \listoffigures
 \cleardoublepage
 
-% Táblázatjegyzék (opcionális) - 3-5 táblázat fölött érdemes
 % List of tables (optional) - useful over 3-5 tables
 \phantomsection
 \addcontentsline{toc}{chapter}{\lsttablelabel}
 \listoftables
 \cleardoublepage
 
-% Algorithmusjegyzék
 % List of algorithms
 \phantomsection
 \addcontentsline{toc}{chapter}{\lstalgorithmlabel}
 \listofalgorithms
 \cleardoublepage
 
-% Forráskódjegyzék (opcionális) - 3-5 kódpélda fölött érdemes
 % List of codes (optional) - useful over 3-5 code samples
 \phantomsection
 \addcontentsline{toc}{chapter}{\lstcodelabel}
 \lstlistoflistings
 \cleardoublepage
 
-% Jelölésjegyzék (opcionális)
 % List of symbols (optional)
 %\printnomenclature
 
