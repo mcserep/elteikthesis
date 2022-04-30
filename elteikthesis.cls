@@ -1,7 +1,7 @@
 %% MIT License
 %%
-%% Version 2.2, 2021/09/20
-%% Copyright (c) 2013-2021 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
+%% Version 2.3, 2022/04/30
+%% Copyright (c) 2013-2022 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
 %% of this software and associated documentation files (the "Software"), to deal
@@ -20,9 +20,16 @@
 %% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 %% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 %% SOFTWARE.
+%%
+%% -----------------------------------------------------------------------------
+%%
+%% The original 1.x versions of the CTAN package were developed by
+%% Dániel Majoros, under the LaTeX Project Public License version 1.2 or later.
+%% This updated work is a complete rewrite with no connection
+%% to the original package.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2021/09/20 ELTE FI bachelor and master thesis template]
+\ProvidesClass{elteikthesis}[2022/04/30 ELTE FI bachelor and master thesis template]
 
 % LaTeX programming tools
 \RequirePackage{etoolbox}

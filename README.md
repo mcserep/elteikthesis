@@ -1,73 +1,75 @@
-![CI status](https://github.com/mcserep/elteikthesis/workflows/Build%20LaTeX%20document/badge.svg)
+[![CI status](https://github.com/mcserep/elteikthesis/actions/workflows/ci.yml/badge.svg)](https://github.com/mcserep/elteikthesis/actions/workflows/ci.yml)
 
-See [English version](README_en.md).
+See [Hungarian version](README_hu.md).
 
-# ELTE IK szakdolgozat és diplomamunka sablon
+# ELTE FI bachelor and master thesis template
 
-A [thesis_hu.tex](thesis_hu.tex) és a belőle előálló [thesis_hu.pdf](thesis_hu.pdf) szolgál kiindulási példaként.
-A sablon alkalmazza a szakdolgozatra / diplomamunkára vonatkozó formai előírásokat, valamint elkészíti a megadott metaadatok alapján a címlapot. A példa dokumentum tartalmi fejezetei a BSc szakdolgozat tipikus felépítését tükrözik.
-A formai megkötések az ELTE Informatikai Kar szabályzatában rögzítetteknek felelnek meg, de általánosan (a megfelelő módosításokkal) alkalmazható más egyetemek dolgozataihoz is.
+The [elteikthesis_en.tex](elteikthesis_en.tex) and the produced [elteikthesis_en.pdf](elteikthesis_en.pdf) serves as an example of usage.
+This class template enforces the required formatting rules for bachelor and master theses and generates the cover page given on the provided metadata. The chapters of the example document follows the typical structure of a BSc thesis.
+The formatting rules are defined to meet the requirements for theses submitted at the Eötvös Loránd University, Faculty of Informatics (Budapest, Hungary). However with sufficient modifications the template should be usable at other universities, too.
 
-A sablon tartalmazza az egy és két oldalas nyomtatáshoz szükséges beállításokat is (ld. `twoside` paraméter), alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált. (Érdemes figyelembe venni, hogy 20-nál kevesebb lapszám kemény kötésben furcsán mutat, továbbá az ábrák könnyen átütnek az általános 80g/m<sup>2</sup> fénymásolópapíron).
-A sablon magyar és angol nyelvű dokumentumok elkészítését is támogatja (ld. `\documentlang` parancs).
+The template contains configuration both for single and double sided printing (see `twoside` option), by default it is set to the recommended single side format.
+The template supports producing both Hungarian and English theses, which can be easily controlled (see `\documentlang` command).
 
-## Fordítás
+## Compilation
 
 ```bash
-# thesis_hu.aux fájl generálása (PDF fájl még hibás hivatkozásokat fog tartalmazni)
-pdflatex thesis_hu.tex
-# Irodalomjegyzék generálása
-bibtex thesis_hu
-# Jelölésjegyzék generálása (ha szükséges)
-makeindex -s nomencl.ist -t thesis_hu.nlg -o thesis_hu.nls thesis_hu.nlo
-# Végleges PDF fájl generálása
-pdflatex thesis_hu.tex
-pdflatex thesis_hu.tex
+# Generate elteikthesis_en.aux file
+# (PDF file contains incorrect references yet)
+pdflatex elteikthesis_en.tex
+# Generate bibliography
+bibtex elteikthesis_en
+# Generate nomenclature (optional)
+makeindex -s nomencl.ist -t elteikthesis_en.nlg \
+  -o elteikthesis_en.nls elteikthesis_en.nlo
+# Generate final PDF file
+pdflatex elteikthesis_en.tex
+pdflatex elteikthesis_en.tex
 ```
 
-**Megjegyzés:** az irodalomjegyzék változása esetén a `bibtex`, majd a `pdflatex` _kétszeri_ futtatása szükséges a helyes hivatkozások előállításához.
+**Note:** in case the bibliography changes, executing `bibtex`, then `pdflatex` _twice_ is required to generate to correct references in the PDF output.
 
-A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStudio](https://www.texstudio.org/)), ugyanezen utasítások kiadásával.
+Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https://www.texstudio.org/)), given the same commands should be executed.
 
-## Kódblokkok szintaxis kiemelése
+## Syntax highlighting of code blocks
 
-A *minted* csomag támogatott a forráskódok szedésére és szintaxis kiemelésére. Használatához szükséges a Python interpreter és a `Pygments` csomag telepítése.
-Lásd a `minted-integration.tex` fájlt példaként és ezt a [dokumentációt](https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted).
+The minted package is also supported for syntax  highlighting. For its usage the Python interpreter and the `Pygments` package must be installed as a prerequisite.
+See the `elteikthesis_minted.tex` file for example and this [documentation](https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted).
 
-## Fontosabb függőségi csomagok
+## Required packages (without completeness)
 
-**Képkezelés:**
+**Image handling:**
 
-* Minimális és maximális méret: [adjustbox](https://ctan.org/pkg/adjustbox)
-* Alábrák: [subcaption](https://ctan.org/pkg/subcaption)
-* Forgatás: [rotating](https://ctan.org/pkg/rotating)
+* Minimal and maximal size: [adjustbox](https://ctan.org/pkg/adjustbox)
+* Subfigures: [subcaption](https://ctan.org/pkg/subcaption)
+* Rotation: [rotating](https://ctan.org/pkg/rotating)
 
-**Táblázatkezelés:**
+**Table management:**
 
-* Oszlopok és sorok egyesítése: [multirow](https://ctan.org/pkg/multirow)
-* Tördelhető táblázat: [longtable](https://ctan.org/pkg/longtable)
-* Cellatartalom vertikális igazítása: [array](https://ctan.org/pkg/array)
-* Többsoros cellák (sortörés): [makecell](https://ctan.org/pkg/makecell)
+* Multirow and multicolumn support: [multirow](https://ctan.org/pkg/multirow)
+* Breakable tables: [longtable](https://ctan.org/pkg/longtable)
+* Vertical positioning of cells: [array](https://ctan.org/pkg/array)
+* Multiline cells (line breaks): [makecell](https://ctan.org/pkg/makecell)
 
-**Felsorolások:**
+**Lists:**
 
-* Szoros térközű felsorolások: [paralist](https://ctan.org/pkg/paralist)
+* Lists with narrow spacing: [paralist](https://ctan.org/pkg/paralist)
 
-**Matematika és algoritmusok:**
+**Mathematical formulas and algorithms:**
 
-* Matematikai formulák: [amsmath](https://ctan.org/pkg/amsmath)
-* Matematikai definíciók: [amsthm](https://ctan.org/pkg/amsthm)
-* Matematikai szimbólumok: [amsfonts](https://ctan.org/pkg/amsfonts)
-* Algoritmusok: [algpseudocode](https://www.ctan.org/pkg/algorithmicx)
-* Kódblokkok: [listingsutf8](https://ctan.org/pkg/listingsutf8), [minted](https://ctan.org/pkg/minted)
+* Mathematical formulas: [amsmath](https://ctan.org/pkg/amsmath)
+* Mathematical definitions: [amsthm](https://ctan.org/pkg/amsthm)
+* Mathematical symbols: [amsfonts](https://ctan.org/pkg/amsfonts)
+* Algorithms: [algpseudocode](https://www.ctan.org/pkg/algorithmicx)
+* Code blocks: [listingsutf8](https://ctan.org/pkg/listingsutf8), [minted](https://ctan.org/pkg/minted)
 
-**Egyebek:**
+**Miscellaneous:**
 
-* Teendők: [todonotes](https://ctan.org/pkg/todonotes)
+* Todos: [todonotes](https://ctan.org/pkg/todonotes)
 
-## Előre definiált tételszerű bekezdések
+## Predefined theorem-like environments
 
-* *definition*: Definíció
-* *theorem*: Tétel
-* *remark*: Emlékeztető
-* *note*: Megjegyzés
+* *definition*
+* *theorem*
+* *remark*
+* *note*
