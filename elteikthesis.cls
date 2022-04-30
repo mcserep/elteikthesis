@@ -121,8 +121,6 @@
 		\newcommand{\lstnomencl}{Jelölésjegyzék}
 		\newcommand{\todolabel}{Teendők listája}
 		\newcommand{\acklabel}{Köszönyetnyilvánítás}
-
-		\newcommand{\declarationplaceholder}{Az eredeti szakdolgozati / diplomamunka témabejelentő helye.}
 	}
 	{ % English
 		\newcommand{\authorlabel}{Author}
@@ -146,8 +144,6 @@
 		\newcommand{\lstnomencl}{List of Symbols}
 		\newcommand{\todolabel}{Todo list}
 		\newcommand{\acklabel}{Acknowledgements}
-
-		\newcommand{\declarationplaceholder}{This page should be the original Thesis Topic Declaration.}
 	}
 }
 % ------------------------------
@@ -384,6 +380,12 @@
 % ------------------------------
 
 % ------------------------------
+% Include PDF documents
+% For topic declaration page
+\RequirePackage{pdfpages}
+% ------------------------------
+
+% ------------------------------
 % Appendix
 \RequirePackage{appendix}
 % ------------------------------
@@ -532,24 +534,6 @@
 		\end{center}
 
 	\end{titlepage}
-}
-% ------------------------------
-
-% ------------------------------
-% Topic declaration page
-\newcommand{\topicdeclaration}{
-	\thispagestyle{empty}
-	\begin{center}
-		\vspace*{\fill}
-
-		{\large \declarationplaceholder}
-
-		\vspace*{\fill}
-	\end{center}
-
-
-	\cleardoublepage
-	\setcounter{page}{1}
 }
 % ------------------------------
 
