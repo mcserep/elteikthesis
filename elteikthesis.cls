@@ -113,6 +113,7 @@
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
 		\newcommand{\lstnomencl}{Jelölésjegyzék}
 		\newcommand{\todolabel}{Teendők listája}
+		\newcommand{\acklabel}{Köszönyetnyilvánítás}
 
 		\newcommand{\declarationplaceholder}{Az eredeti szakdolgozati / diplomamunka témabejelentő helye.}
 	}
@@ -137,6 +138,7 @@
 		\newcommand{\lstcodelabel}{List of Codes}
 		\newcommand{\lstnomencl}{List of Symbols}
 		\newcommand{\todolabel}{Todo list}
+		\newcommand{\acklabel}{Acknowledgements}
 
 		\newcommand{\declarationplaceholder}{This page should be the original Thesis Topic Declaration.}
 	}
