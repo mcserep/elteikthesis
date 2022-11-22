@@ -32,6 +32,11 @@ A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStu
 A *minted* csomag támogatott a forráskódok szedésére és szintaxis kiemelésére. Használatához szükséges a Python interpreter és a `Pygments` csomag telepítése.
 Lásd az `elteikthesis_minted.tex` fájlt példaként és ezt a [dokumentációt](https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted).
 
+## Overleaf
+
+Az *Overleaf* egy ingyenes, könnyen használható, kollaboratív, online LaTeX szerkesztő. Hasonló, mint például a Google Docs, de LateX dokumentumokhoz.
+Az ELTE IK szakdolgozat és diplomamunka sablon legfrissebb kiadását [Overleafen is megtalálod](https://www.overleaf.com/latex/templates/elte-fi-thesis-template/scjzzzbjvwfz).
+
 ## Fontosabb függőségi csomagok
 
 **Képkezelés:**
