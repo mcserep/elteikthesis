@@ -488,7 +488,7 @@
 			\end{tabular}
 
 			\vspace{5.0cm}
-			{\bf \LARGE \thesistitle}
+			{\bf \LARGE \thesistitle \par}
 			\vspace{4.0cm}
 
 			\ifdefined\extsupaff
