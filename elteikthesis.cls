@@ -1,7 +1,7 @@
 %% MIT License
 %%
-%% Version 2.3, 2022/04/30
-%% Copyright (c) 2013-2022 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
+%% Version 2.3.1, 2023/04/10
+%% Copyright (c) 2013-2023 Máté Cserép <mcserep@inf.elte.hu>, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
 %% of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 %% to the original package.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteikthesis}[2022/04/30 ELTE FI bachelor and master thesis template]
+\ProvidesClass{elteikthesis}[2023/04/10 ELTE FI bachelor and master thesis template]
 
 % LaTeX programming tools
 \RequirePackage{etoolbox}
