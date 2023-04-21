@@ -464,8 +464,8 @@
 
 % ------------------------------
 % List of TODOs
-% http://www.tex.ac.uk/tex-archive/help/Catalogue/entries/todonotes.html
-\RequirePackage[textwidth=30mm, textsize=small, color=todobackg, linecolor=orange, colorinlistoftodos, shadow, obeyFinal]{todonotes}
+% http://tug.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf
+\RequirePackage[textwidth=30mm, textsize=small, color=todobackg, linecolor=orange, colorinlistoftodos, loadshadowlibrary, shadow, obeyFinal]{todonotes}
 \RequirePackage[displaymath, tightpage]{preview}
 % Place TODOs on the left margin
 \reversemarginpar
