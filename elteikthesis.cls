@@ -120,7 +120,7 @@
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
 		\newcommand{\lstnomencl}{Jelölésjegyzék}
 		\newcommand{\todolabel}{Teendők listája}
-		\newcommand{\acklabel}{Köszönyetnyilvánítás}
+		\newcommand{\acklabel}{Köszönetnyilvánítás}
 	}
 	{ % English
 		\newcommand{\authorlabel}{Author}
