@@ -3,7 +3,7 @@
 
 See [Hungarian version](README_hu.md).
 
-# ELTE FI bachelor and master thesis template
+# ELTE FI Bachelor's and Master's thesis template
 
 The [elteikthesis_en.tex](elteikthesis_en.tex) and the produced [elteikthesis_en.pdf](elteikthesis_en.pdf) serves as an example of usage.
 This class template enforces the required formatting rules for bachelor and master theses and generates the cover page given on the provided metadata. The chapters of the example document follows the typical structure of a BSc thesis.
@@ -13,6 +13,22 @@ The template contains configuration both for single and double sided printing (s
 The template supports producing both Hungarian and English theses, which can be easily controlled (see `\documentlang` command).
 
 ## Compilation
+
+Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https://www.texstudio.org/)), given the same commands should be executed.
+
+### Using a build system
+
+```bash
+# Generate everything automatically, in the right order.
+# (Needs GNU make to be installed!)
+make thesis
+
+# The same as above, just by calling LaTeX-mk directly:
+# (This is available without make, using standard TeX distributions.)
+latexmk --pdflatex elteikthesis_en
+```
+
+### Manually
 
 ```bash
 # Generate elteikthesis_en.aux file
@@ -27,8 +43,6 @@ makeindex -s nomencl.ist -t elteikthesis_en.nlg \
 pdflatex elteikthesis_en.tex
 ```
 
-Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https://www.texstudio.org/)), given the same commands should be executed.
-
 ## Syntax highlighting of code blocks
 
 The minted package is also supported for syntax  highlighting. For its usage the Python interpreter and the `Pygments` package must be installed as a prerequisite.
@@ -36,7 +50,7 @@ See the `elteikthesis_minted.tex` file for example and this [documentation](http
 
 ## Overleaf
 
-*Overleaf* is a free, easy to use online, collaborative LaTeX editor; similar like e.g. Google Docs, but for LateX documents.
+*Overleaf* is a free, easy to use online, collaborative LaTeX editor; similar like e.g. Google Docs, but for LaTeX documents.
 You can also find the latest release of this ELTE FI bachelor and master thesis template [on Overleaf](https://www.overleaf.com/latex/templates/elte-fi-thesis-template/scjzzzbjvwfz).
 
 ## Required packages (without completeness)

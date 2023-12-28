@@ -1,4 +1,4 @@
-# ELTE IK szakdolgozat és diplomamunka sablon
+# ELTE IK Szakdolgozat és Diplomamunka sablon
 
 A [elteikthesis_hu.tex](elteikthesis_hu.tex) és a belőle előálló [elteikthesis_hu.pdf](elteikhesis_hu.pdf) szolgál kiindulási példaként.
 A sablon alkalmazza a szakdolgozatra / diplomamunkára vonatkozó formai előírásokat, valamint elkészíti a megadott metaadatok alapján a címlapot. A példa dokumentum tartalmi fejezetei a BSc szakdolgozat tipikus felépítését tükrözik.
@@ -8,6 +8,22 @@ A sablon tartalmazza az egy és két oldalas nyomtatáshoz szükséges beállít
 A sablon magyar és angol nyelvű dokumentumok elkészítését is támogatja (ld. `\documentlang` parancs).
 
 ## Fordítás
+
+A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStudio](https://www.texstudio.org/)), ugyanezen utasítások kiadásával.
+
+### Build rendszer használatával
+
+```bash
+# Mindent lefordít automatikusan, a megfelelő sorrendben.
+# (GNU make kell hozzá!)
+make
+
+# Ugyanaz, mint az előző, csak közvetlenül a LaTeX-mk-t hívva:
+# (Elérhető standard TeX disztribúcióval, make nélkül.)
+latexmk --pdflatex elteikthesis_hu
+```
+
+### Kézzel
 
 ```bash
 # elteikthesis_hu.aux fájl generálása
@@ -22,7 +38,6 @@ makeindex -s nomencl.ist -t elteikthesis_hu.nlg \
 pdflatex elteikthesis_hu.tex
 ```
 
-A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStudio](https://www.texstudio.org/)), ugyanezen utasítások kiadásával.
 
 ## Kódblokkok szintaxis kiemelése
 
@@ -31,7 +46,7 @@ Lásd az `elteikthesis_minted.tex` fájlt példaként és ezt a [dokumentációt
 
 ## Overleaf
 
-Az *Overleaf* egy ingyenes, könnyen használható, kollaboratív, online LaTeX szerkesztő. Hasonló, mint például a Google Docs, de LateX dokumentumokhoz.
+Az *Overleaf* egy ingyenes, könnyen használható, kollaboratív, online LaTeX szerkesztő. Hasonló, mint például a Google Docs, de LaTeX dokumentumokhoz.
 Az ELTE IK szakdolgozat és diplomamunka sablon legfrissebb kiadását [Overleafen is megtalálod](https://www.overleaf.com/latex/templates/elte-fi-thesis-template/scjzzzbjvwfz).
 
 ## Fontosabb függőségi csomagok
