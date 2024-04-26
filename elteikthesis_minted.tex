@@ -1,6 +1,8 @@
 \documentclass{elteikthesis}[2024/04/26]
 
 \usepackage[newfloat]{minted}
+\removefromtoclist[float]{lol} % must be after loading minted
+% see: https://github.com/gpoore/minted/issues/390
 
 \begin{document}
 \documentlang{english}
